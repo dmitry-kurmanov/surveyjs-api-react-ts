@@ -31,7 +31,7 @@ export default function SurveysList() {
   if (surveys.length === 0) return <div>{noSurveysText}</div>;
 
   const items = surveys.map((survey: ISurvey) => (
-    <SurveyListItem key={survey.Id} name={survey.Name} />
+    <SurveyListItem key={survey.Id} id={survey.Id} name={survey.Name} />
   ));
 
   return <ul className="survey-list">{items}</ul>;

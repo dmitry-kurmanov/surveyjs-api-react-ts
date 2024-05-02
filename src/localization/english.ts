@@ -5,7 +5,7 @@ export default {
     noSurveysText: 'There is no any survey yet.',
   },
   surveyListItem: {
-    editButtonText: 'Edit',
+    editLinkText: 'Edit',
   },
   errorPage: {
     title: "Oops!",

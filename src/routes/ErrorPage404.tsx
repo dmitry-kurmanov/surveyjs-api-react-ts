@@ -8,13 +8,16 @@ interface IRouteError {
 }
 
 export default function ErrorPage404() {
+    const title = localization.errorPage.title;
+    const subTitle = localization.errorPage.subTitle;
+
     const error:IRouteError = useRouteError() as IRouteError;
     console.error(error);
 
     return (
         <div id="error-page">
-          <h1>{localization.errorPage.title}</h1>
-          <h2>{localization.errorPage.subTitle}</h2>
+          <h1>{title}</h1>
+          <h2>{subTitle}</h2>
           <p>
             <i>{error.statusText || error.message}</i>
           </p>

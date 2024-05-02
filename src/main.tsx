@@ -8,6 +8,7 @@ import {
 
 import Root from './routes/Root.tsx'
 import ErrorPage404 from './routes/ErrorPage404.tsx';
+import EditSurvey from './routes/EditSurvey.tsx';
 
 import './index.css'
 
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage404 />
+  },
+  {
+    path: "edit-survey/:surveyId",
+    element: <EditSurvey />,
   },
 ]);
 
