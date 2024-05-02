@@ -7,4 +7,8 @@ export default {
   surveyListItem: {
     editButtonText: 'Edit',
   },
+  errorPage: {
+    title: "Oops!",
+    subTitle: "Sorry, an unexpected error has occurred."
+  }
 };

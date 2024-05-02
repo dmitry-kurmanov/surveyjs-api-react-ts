@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import SurveyListItem from '../listItem/SurveyListItem.tsx';
+import SurveyListItem from '../surveyListItem/SurveyListItem.tsx';
 
 import './SurveyList.scss';
 
-import localization from '../localization/english.ts';
+import localization from '../../localization/english.ts';
 
 interface ISurvey {
   Id: string;
@@ -31,7 +31,7 @@ export default function SurveysList() {
   if (surveys.length === 0) return <div>{noSurveysText}</div>;
 
   const items = surveys.map((survey: ISurvey) => (
-    <SurveyListItem id={survey.Id} name={survey.Name} />
+    <SurveyListItem key={survey.Id} name={survey.Name} />
   ));
 
   return <ul className="survey-list">{items}</ul>;
