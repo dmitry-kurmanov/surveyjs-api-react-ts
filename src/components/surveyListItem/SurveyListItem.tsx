@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import './SurveyListItem.scss';
 
 import localization from '../../localization/english.ts';
@@ -13,7 +15,7 @@ export default function SurveyListItem({ id, name }: ISurveyListItem) {
   return (
     <li className="survey-list-item">
       <span className="survey-list-item__name">{name}</span>
-      <a href={`/edit-survey/${id}`} className="survey-list-item__edit-link">{editLinkText}</a>
+      <Link to={`/edit-survey/${id}`} className="survey-list-item__edit-link" state={{ json: "value123" }}>{editLinkText}</Link>
     </li>
   );
 }

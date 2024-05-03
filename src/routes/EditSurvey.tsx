@@ -1,10 +1,16 @@
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
+
+import SurveyCreator from '../components/surveyCreator/SurveysCreator.tsx'
 
 export default function EditSurvey() {
-    const { surveyId } = useParams();
+    const { surveyIdParam } = useParams();
+    let { state } = useLocation();
+
+    const surveyId = surveyIdParam as string;
+    const surveyJson = state.json as string;
 
     return <div>
-        edit survey: {surveyId}
+        <SurveyCreator surveyId={surveyId} surveyJson={surveyJson}/>
         <a href="/">Go Back</a>
     </div>
 }
