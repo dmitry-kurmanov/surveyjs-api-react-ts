@@ -26,7 +26,6 @@ export default function SurveysList() {
   }, []);
 
   async function getActiveSurveys() {
-    debugger;
     if (surveys.length !== 0) return;
     const accessKey = 'f60db1fb75f440eaaddc46bfca1a8c03';
     const url = `https://api.surveyjs.io/private/Surveys/getActive?accessKey=${accessKey}`;
