@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import SurveyListItem from '../surveyListItem/SurveyListItem.tsx';
 
+import { useSelector, useDispatch } from 'react-redux'
+
+import type { RootState } from '../../store.ts'
+import { addSurveys } from '../../slices/surveysSlice.ts'
+
 import './SurveyList.scss';
 
 import localization from '../../localization/english.ts';
@@ -11,21 +16,24 @@ interface ISurvey {
 }
 
 export default function SurveysList() {
-  const noSurveysText = localization.surveysList.noSurveysText;
+  const surveys = useSelector((state:RootState) => state.surveys.value);
+  const dispatch = useDispatch();
 
-  const [surveys, setSurveys] = useState<ISurvey[]>([]);
+  const noSurveysText = localization.surveysList.noSurveysText;
 
   useEffect(() => {
     getActiveSurveys();
   }, []);
 
   async function getActiveSurveys() {
+    debugger;
+    if (surveys.length !== 0) return;
     const accessKey = 'f60db1fb75f440eaaddc46bfca1a8c03';
     const url = `https://api.surveyjs.io/private/Surveys/getActive?accessKey=${accessKey}`;
 
     const data: any = await fetch(url);
     const activeSurveys: ISurvey[] = await data.json();
-    setSurveys(activeSurveys);
+    dispatch(addSurveys(activeSurveys))
   }
 
   if (surveys.length === 0) return <div>{noSurveysText}</div>;

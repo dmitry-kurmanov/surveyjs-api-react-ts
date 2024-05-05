@@ -1,4 +1,5 @@
 import SurveysList from '../list/SurveysList';
+import EditSurvey from '../routes/EditSurvey';
 
 export default {
   surveysList: {
@@ -10,5 +11,8 @@ export default {
   errorPage: {
     title: "Oops!",
     subTitle: "Sorry, an unexpected error has occurred."
+  },
+  editSurveyPage: {
+    goBackLinkText: "Go Back"
   }
 };
