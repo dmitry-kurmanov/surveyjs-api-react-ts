@@ -4,7 +4,7 @@ import SurveyListItem from '../surveyListItem/SurveyListItem.tsx';
 import { useSelector, useDispatch } from 'react-redux'
 
 import type { RootState } from '../../store.ts'
-import { addSurveys } from '../../slices/surveysSlice.ts'
+import { setSurveys } from '../../slices/surveysSlice.ts'
 
 import './SurveyList.scss';
 
@@ -31,8 +31,9 @@ export default function SurveysList() {
     const url = `https://api.surveyjs.io/private/Surveys/getActive?accessKey=${accessKey}`;
 
     const data: any = await fetch(url);
-    const activeSurveys: ISurvey[] = await data.json();
-    dispatch(addSurveys(activeSurveys))
+    let activeSurveys: ISurvey[] = await data.json();
+    activeSurveys = activeSurveys.filter((item)=>item.Id === "b2cdfa87-b969-4b20-9537-14147e8e7e89");
+    dispatch(setSurveys(activeSurveys))
   }
 
   if (surveys.length === 0) return <div>{noSurveysText}</div>;
