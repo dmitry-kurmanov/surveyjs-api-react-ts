@@ -6,12 +6,11 @@ import localization from '../localization/english.ts';
 import SurveyCreator from '../components/surveyCreator/SurveysCreator.tsx'
 
 export default function EditSurvey() {
-    const { surveyIdParam } = useParams();
+    const params = useParams();
     let { state } = useLocation();
-
     const goBackLinkText = localization.editSurveyPage.goBackLinkText;
 
-    const surveyId = surveyIdParam as string;
+    const surveyId = params.surveyId as string;
     const surveyJson = state.json as string;
 
     return <div>

@@ -32,7 +32,6 @@ export default function SurveysList() {
 
     const data: any = await fetch(url);
     let activeSurveys: ISurvey[] = await data.json();
-    activeSurveys = activeSurveys.filter((item)=>item.Id === "b2cdfa87-b969-4b20-9537-14147e8e7e89");
     dispatch(setSurveys(activeSurveys))
   }
 
