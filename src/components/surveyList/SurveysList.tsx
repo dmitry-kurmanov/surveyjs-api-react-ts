@@ -10,9 +10,10 @@ import './SurveyList.scss';
 
 import localization from '../../localization/english.ts';
 
-interface ISurvey {
+export interface ISurvey {
   Id: string;
   Name: string;
+  Json: string;
 }
 
 export default function SurveysList() {
@@ -38,7 +39,7 @@ export default function SurveysList() {
   if (surveys.length === 0) return <div>{noSurveysText}</div>;
 
   const items = surveys.map((survey: ISurvey) => (
-    <SurveyListItem key={survey.Id} id={survey.Id} name={survey.Name} />
+    <SurveyListItem key={survey.Id} survey={survey}/>
   ));
 
   return <ul className="survey-list">{items}</ul>;

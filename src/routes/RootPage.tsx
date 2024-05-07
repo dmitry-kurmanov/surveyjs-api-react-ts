@@ -1,7 +1,7 @@
 import Counter from '../components/counter/Counter.tsx'
 import SurveysList from '../components/surveyList/SurveysList.tsx'
 
-function App() {
+function RootPage() {
   return (
     <>
       <div><Counter /></div>
@@ -13,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default RootPage;

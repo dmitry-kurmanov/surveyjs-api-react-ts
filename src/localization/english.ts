@@ -1,5 +1,5 @@
 import SurveysList from '../list/SurveysList';
-import EditSurvey from '../routes/EditSurvey';
+import EditSurvey from '../routes/EditSurveyPage';
 
 export default {
   surveysList: {

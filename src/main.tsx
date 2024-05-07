@@ -9,21 +9,21 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import Root from './routes/Root.tsx'
-import ErrorPage404 from './routes/ErrorPage404.tsx';
-import EditSurvey from './routes/EditSurvey.tsx';
+import RootPage from './routes/RootPage.tsx'
+import ErrorPage404Page from './routes/ErrorPage404Page.tsx';
+import EditSurveyPage from './routes/EditSurveyPage.tsx';
 
 import './index.css'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage404 />
+    element: <RootPage />,
+    errorElement: <ErrorPage404Page />
   },
   {
     path: "edit-survey/:surveyId",
-    element: <EditSurvey />,
+    element: <EditSurveyPage />,
   },
 ]);
 
