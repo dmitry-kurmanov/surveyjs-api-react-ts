@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 
 import RootPage from './routes/RootPage.tsx'
-import ErrorPage404Page from './routes/ErrorPage404Page.tsx';
+import Error404Page from './routes/Error404Page.tsx';
 import EditSurveyPage from './routes/EditSurveyPage.tsx';
 
 import './index.css'
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootPage />,
-    errorElement: <ErrorPage404Page />
+    errorElement: <Error404Page />
   },
   {
     path: "edit-survey/:surveyId",

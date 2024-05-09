@@ -9,7 +9,7 @@ import localization from '../localization/english.ts';
 import SurveyCreator from '../components/surveyCreator/SurveysCreator.tsx'
 import { ISurvey } from '../components/surveyList/SurveysList.tsx';
 
-import ErrorPage404Page from './ErrorPage404Page.tsx'
+import Error404Page from './Error404Page.tsx'
 
 export default function EditSurvey() {
     const surveys = useSelector((state:RootState) => state.surveys.value);
@@ -22,7 +22,7 @@ export default function EditSurvey() {
     const survey:ISurvey | undefined = surveys.find((s)=>s.Id === surveyId);
 
     if (typeof survey === "undefined") {
-        return ErrorPage404Page;
+        return <Error404Page />;
     }
 
     if (!survey.Json) {
