@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
 
-import {ISurvey} from '../surveyList/SurveysList.tsx'
-
 import './SurveyListItem.scss';
 
 import localization from '../../localization/english.ts';
 
+interface ISurveyListItem {
+  name: string,
+  id: string
+}
 
-export default function SurveyListItem({survey}: {survey: ISurvey}) {
+export default function SurveyListItem({name, id}: ISurveyListItem) {
   const editLinkText = localization.surveyListItem.editLinkText;
 
   return (
     <li className="survey-list-item">
-      <span className="survey-list-item__name">{survey.Name}</span>
-      <Link to={`/edit-survey/${survey.Id}`} className="survey-list-item__edit-link">{editLinkText}</Link>
+      <span className="survey-list-item__name">{name}</span>
+      <Link to={`/edit-survey/${id}`} className="survey-list-item__edit-link">{editLinkText}</Link>
     </li>
   );
 }

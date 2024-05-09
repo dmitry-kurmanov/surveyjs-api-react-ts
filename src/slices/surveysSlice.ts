@@ -10,18 +10,20 @@ const initialState:ISurveyState = {
     value: []
 };
 
+export function setSurveysReducer(state:ISurveyState, action:PayloadAction<ISurvey[]>) {
+    // Redux Toolkit allows us to write "mutating" logic in reducers. It
+    // doesn't actually mutate the state because it uses the Immer library,
+    // which detects changes to a "draft state" and produces a brand new
+    // immutable state based off those changes
+    let newSurveys = action.payload as ISurvey[];
+    state.value = [...newSurveys];
+}
+
 export const surveySlice = createSlice({
     name: "surveys",
     initialState,
     reducers: {
-        setSurveys: (state:ISurveyState, action:PayloadAction<ISurvey[]>)=> {
-            // Redux Toolkit allows us to write "mutating" logic in reducers. It
-            // doesn't actually mutate the state because it uses the Immer library,
-            // which detects changes to a "draft state" and produces a brand new
-            // immutable state based off those changes
-            let payload = action.payload as ISurvey[];
-            state.value = [...payload];
-        },
+        setSurveys: setSurveysReducer,
         addSurvey: (state:ISurveyState, action:PayloadAction<ISurvey>)=> {
             let payload = action.payload as ISurvey;
             state.value.push(payload)

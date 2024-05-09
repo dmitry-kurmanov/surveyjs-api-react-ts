@@ -21,6 +21,7 @@ export default function SurveysList() {
   const dispatch = useDispatch();
 
   const noSurveysText = localization.surveysList.noSurveysText;
+  const title = localization.surveysList.title;
 
   useEffect(() => {
     getActiveSurveys();
@@ -39,8 +40,11 @@ export default function SurveysList() {
   if (surveys.length === 0) return <div>{noSurveysText}</div>;
 
   const items = surveys.map((survey: ISurvey) => (
-    <SurveyListItem key={survey.Id} survey={survey}/>
+    <SurveyListItem key={survey.Id} name={survey.Name} id={survey.Id}/>
   ));
 
-  return <ul className="survey-list">{items}</ul>;
+  return <>
+    <h1>{title}</h1>
+    <ul className="survey-list">{items}</ul>
+  </>
 }
