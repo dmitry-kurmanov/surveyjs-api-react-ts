@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import SurveyListItem from '../surveyListItem/SurveyListItem.tsx';
 
 import { useSelector, useDispatch } from 'react-redux'
@@ -24,15 +24,15 @@ export default function SurveysList() {
   const title = localization.surveysList.title;
 
   useEffect(() => {
+    if (surveys.length !== 0) return;
     getActiveSurveys();
   }, []);
 
   async function getActiveSurveys() {
-    if (surveys.length !== 0) return;
     const accessKey = 'f60db1fb75f440eaaddc46bfca1a8c03';
     const url = `https://api.surveyjs.io/private/Surveys/getActive?accessKey=${accessKey}`;
 
-    const data: any = await fetch(url);
+    const data = await fetch(url);
     let activeSurveys: ISurvey[] = await data.json();
     dispatch(setSurveys(activeSurveys))
   }

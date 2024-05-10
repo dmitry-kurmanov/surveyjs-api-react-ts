@@ -14,6 +14,7 @@ export default {
     subTitle: "Sorry, an unexpected error has occurred."
   },
   editSurveyPage: {
-    goBackLinkText: "Go Back"
+    goBackLinkText: "Go Back",
+    surveyJsonLoadingText: "Survey's json is loading..."
   }
 };
