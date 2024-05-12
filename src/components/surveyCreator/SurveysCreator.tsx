@@ -18,7 +18,7 @@ export default function SurveysCreator({ survey }: { survey: ISurvey }) {
     <div>
       <div>id: {survey.Id}</div>
       <div>name: {survey.Name}</div>
-      <div>json: {survey.Json.toString()}</div>
+      <div>json: {survey.Json && survey.Json.toString()}</div>
     </div>
     <SurveyCreatorComponent creator={creator} />
   </>

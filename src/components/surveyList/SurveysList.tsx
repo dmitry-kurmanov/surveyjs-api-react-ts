@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import type { RootState } from '../../store.ts'
 import { setSurveys } from '../../slices/surveysSlice.ts'
+import { surveyjsAccessKey } from '../../accessKey.ts'
 
 import './SurveyList.scss';
 
@@ -14,6 +15,7 @@ export interface ISurvey {
   Id: string;
   Name: string;
   Json: string;
+  UpdatedOn: string;
 }
 
 export default function SurveysList() {
@@ -29,9 +31,7 @@ export default function SurveysList() {
   }, []);
 
   async function getActiveSurveys() {
-    const accessKey = 'f60db1fb75f440eaaddc46bfca1a8c03';
-    const url = `https://api.surveyjs.io/private/Surveys/getActive?accessKey=${accessKey}`;
-
+    const url = `https://api.surveyjs.io/private/Surveys/getActive?accessKey=${surveyjsAccessKey}`;
     const data = await fetch(url);
     let activeSurveys: ISurvey[] = await data.json();
     dispatch(setSurveys(activeSurveys))

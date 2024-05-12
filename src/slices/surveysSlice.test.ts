@@ -4,8 +4,8 @@ import { ISurvey } from '../components/surveyList/SurveysList.tsx'
 import { ISurveyState, setSurveysReducer, updateSurveyJsonReducer } from './surveysSlice.ts'
 
 const newSurveys: ISurvey[] = [
-    { Id: '0', Name: 'name1', Json: 'json1' },
-    { Id: '1', Name: 'name2', Json: 'json2' }
+    { Id: '0', Name: 'name0', Json: 'json0', UpdatedOn: 'date0' },
+    { Id: '1', Name: 'name1', Json: 'json1', UpdatedOn: 'date1' }
 ]
 
 const createNewAction = <T>({ payload, type = 'action-test-type' }: { payload: T, type?: string }) => {

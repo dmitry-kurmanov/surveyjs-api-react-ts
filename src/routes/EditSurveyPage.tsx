@@ -1,20 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 
 import type { RootState } from '../store.ts'
+import { surveyjsAccessKey } from '../accessKey.ts'
 import localization from '../localization/english.ts';
 import SurveyCreator from '../components/surveyCreator/SurveysCreator.tsx'
 import { ISurvey } from '../components/surveyList/SurveysList.tsx';
 import Error404Page from './Error404Page.tsx'
 import { updateSurveyJson } from '../slices/surveysSlice.ts'
 
+interface ISurveyInfo {
+    Info: {
+        UpdatedOn: string
+    },
+    Json: string
+}
 
 export default function EditSurvey() {
     const surveys = useSelector((state: RootState) => state.surveys.value);
     const params = useParams();
     const dispatch = useDispatch();
+    const [isSurveyInfoFetched, setIsSurveyInfoFetched] = useState(false);
 
     const { goBackLinkText, surveyJsonLoadingText } = localization.editSurveyPage;
 
@@ -25,20 +33,25 @@ export default function EditSurvey() {
         return <Error404Page />;
     }
 
-    let json = survey.Json;
+    let updatedOn = survey.UpdatedOn;
 
     useEffect(() => {
-        if (json) return;
         getSurveyJson(surveyId);
     }, []);
 
     async function getSurveyJson(id: string) {
-        const data = await fetch(`https://api.surveyjs.io/public/Survey/getSurvey?surveyId=${id}`);
-        let newJson: string = await data.json();
-        dispatch(updateSurveyJson({ Id: id, Json: newJson }))
+        const data = await fetch(`https://api.surveyjs.io/private/Surveys/getSurveyInfo?accessKey=${surveyjsAccessKey}&surveyId=${id}`);
+        let dataJson: ISurveyInfo = await data.json();
+        if (
+            new Date(updatedOn.replace("Z", "")).toUTCString() !==  
+            new Date(dataJson.Info.UpdatedOn).toUTCString()
+        ) {
+            dispatch(updateSurveyJson({ Id: id, Json: dataJson.Json }))
+        }
+        setIsSurveyInfoFetched(true);
     }
 
-    if (!json) return <div>{surveyJsonLoadingText}</div>;
+    if (!isSurveyInfoFetched) return <div>{surveyJsonLoadingText}</div>;
 
     return <div>
         <Link to="/">{goBackLinkText}</Link>
