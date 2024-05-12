@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { ISurvey } from '../components/surveyList/SurveysList.tsx'
+export interface ISurvey {
+    Id: string
+    Name: string
+    Json: string
+  }
 
 export interface ISurveyState {
     value: ISurvey[]

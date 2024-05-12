@@ -7,9 +7,8 @@ import type { RootState } from '../store.ts'
 import { surveyjsAccessKey } from '../accessKey.ts'
 import localization from '../localization/english.ts';
 import SurveyCreator from '../components/surveyCreator/SurveysCreator.tsx'
-import { ISurvey } from '../components/surveyList/SurveysList.tsx';
 import Error404Page from './Error404Page.tsx'
-import { updateSurveyJson } from '../slices/surveysSlice.ts'
+import { ISurvey, updateSurveyJson } from '../slices/surveysSlice.ts'
 
 interface ISurveyInfo {
     Info: {
@@ -33,8 +32,6 @@ export default function EditSurvey() {
         return <Error404Page />;
     }
 
-    let updatedOn = survey.UpdatedOn;
-
     useEffect(() => {
         getSurveyJson(surveyId);
     }, []);
@@ -42,10 +39,7 @@ export default function EditSurvey() {
     async function getSurveyJson(id: string) {
         const data = await fetch(`https://api.surveyjs.io/private/Surveys/getSurveyInfo?accessKey=${surveyjsAccessKey}&surveyId=${id}`);
         let dataJson: ISurveyInfo = await data.json();
-        if (
-            new Date(updatedOn.replace("Z", "")).toUTCString() !==  
-            new Date(dataJson.Info.UpdatedOn).toUTCString()
-        ) {
+        if (!isSurveyInfoFetched) {
             dispatch(updateSurveyJson({ Id: id, Json: dataJson.Json }))
         }
         setIsSurveyInfoFetched(true);

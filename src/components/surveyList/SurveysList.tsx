@@ -4,19 +4,12 @@ import SurveyListItem from '../surveyListItem/SurveyListItem.tsx';
 import { useSelector, useDispatch } from 'react-redux'
 
 import type { RootState } from '../../store.ts'
-import { setSurveys } from '../../slices/surveysSlice.ts'
+import { ISurvey, setSurveys } from '../../slices/surveysSlice.ts'
 import { surveyjsAccessKey } from '../../accessKey.ts'
 
 import './SurveyList.scss';
 
 import localization from '../../localization/english.ts';
-
-export interface ISurvey {
-  Id: string;
-  Name: string;
-  Json: string;
-  UpdatedOn: string;
-}
 
 export default function SurveysList() {
   const surveys = useSelector((state:RootState) => state.surveys.value);
