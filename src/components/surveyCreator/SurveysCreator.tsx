@@ -27,13 +27,15 @@ export default function SurveysCreator({ survey }: { survey: ISurvey }) {
   creator.saveSurveyFunc = (saveNo: number, callback: (no: number, isSuccess: boolean) => void) => {
     fetch(`https://api.surveyjs.io/private/Surveys/changeJson?accessKey=${surveyjsAccessKey}`, {
       method: "PUT",
+      headers: {
+        'Content-type': 'application/json'
+       },
       body: JSON.stringify({
         Id: survey.Id,
-        Json: creator.text,
-        Text: creator.text 
+        Text: JSON.stringify(creator.JSON).replace("'", '"'),
+        JSON: JSON.stringify(creator.JSON).replace("'", '"')
       })
     }).then((/*data*/) => {
-      alert("ahahaha");
       callback(saveNo, true);
     });
   };
