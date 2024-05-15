@@ -8,18 +8,17 @@ import { surveyjsAccessKey } from "../../accessKey.ts";
 interface ISurveyListItem {
   name: string,
   id: string,
-  isPublished: boolean,
 }
 
-export default function SurveyListItem({ name, id, isPublished }: ISurveyListItem) {
+export default function SurveyListItem({ name, id }: ISurveyListItem) {
   const editLinkText = localization.surveyListItem.editLinkText;
 
   function runSurvey(event: React.MouseEvent<HTMLButtonElement>) {
-    if (isPublished) {
+    fetch(`https://api.surveyjs.io/private/Surveys/publish?accessKey=${surveyjsAccessKey}&${id}`, {
+      method: "PUT",
+    }).then((/*data*/) => {
       window.open(`https://surveyjs.io/published?id=${id}`, '_blank');
-    } else {
-      //`https://api.surveyjs.io/private/Surveys/publish/${id}?accessKey=${surveyjsAccessKey}`
-    }
+    });
   }
 
   return (
