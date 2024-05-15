@@ -3,8 +3,8 @@ import { expect, test } from 'vitest'
 import { ISurvey, ISurveyState, setSurveysReducer, updateSurveyJsonReducer } from './surveysSlice.ts'
 
 const newSurveys: ISurvey[] = [
-    { Id: '0', Name: 'name0', Json: 'json0' },
-    { Id: '1', Name: 'name1', Json: 'json1' }
+    { Id: '0', Name: 'name0', Json: 'json0', IsPublished: false },
+    { Id: '1', Name: 'name1', Json: 'json1', IsPublished: false }
 ]
 
 const createNewAction = <T>({ payload, type = 'action-test-type' }: { payload: T, type?: string }) => {

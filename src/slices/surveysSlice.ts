@@ -4,6 +4,7 @@ export interface ISurvey {
     Id: string
     Name: string
     Json: string
+    IsPublished: boolean
   }
 
 export interface ISurveyState {
