@@ -1,6 +1,3 @@
-import SurveysList from '../list/SurveysList';
-import EditSurvey from '../routes/EditSurveyPage';
-
 export default {
   surveysList: {
     noSurveysText: 'There is no any survey yet.',
@@ -8,6 +5,7 @@ export default {
   },
   surveyListItem: {
     editLinkText: 'Edit',
+    runButtonText: "Run"
   },
   errorPage: {
     title: "Oops!",
@@ -15,6 +13,6 @@ export default {
   },
   editSurveyPage: {
     goBackLinkText: "Go Back",
-    surveyJsonLoadingText: "Survey's json is loading..."
+    surveyJsonLoadingText: "Survey is loading..."
   }
 };

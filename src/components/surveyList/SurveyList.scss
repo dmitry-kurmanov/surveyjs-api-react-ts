@@ -1,3 +1,13 @@
+.survey-list-no-surveys-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.survey-list-container {
+  padding: 0 16px;
+}
+
 .survey-list {
   list-style: none;
   margin: 0;

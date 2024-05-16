@@ -9,14 +9,13 @@ import { surveyjsAccessKey } from '../../accessKey.ts'
 
 import './SurveyList.scss';
 
-import localization from '../../localization/english.ts';
+import getTexts from '../../localization/localization.ts';
 
 export default function SurveysList() {
   const surveys = useSelector((state:RootState) => state.surveys.value);
   const dispatch = useDispatch();
 
-  const noSurveysText = localization.surveysList.noSurveysText;
-  const title = localization.surveysList.title;
+  const {noSurveysText, title} = getTexts().surveysList;
 
   useEffect(() => {
     if (surveys.length !== 0) return;
@@ -30,14 +29,20 @@ export default function SurveysList() {
     dispatch(setSurveys(activeSurveys))
   }
 
-  if (surveys.length === 0) return <div>{noSurveysText}</div>;
+  if (surveys.length === 0) {
+    return <div className="survey-list-no-surveys-container">
+      <h2>{noSurveysText}</h2>
+    </div>;
+  }
 
   const items = surveys.map((survey: ISurvey) => (
     <SurveyListItem key={survey.Id} name={survey.Name} id={survey.Id} />
   ));
 
   return <>
-    <h1>{title}</h1>
-    <ul className="survey-list">{items}</ul>
+    <div className="survey-list-container">
+      <h1>{title}</h1>
+      <ul className="survey-list">{items}</ul>
+    </div>
   </>
 }

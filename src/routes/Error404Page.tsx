@@ -1,6 +1,6 @@
 import { useRouteError } from "react-router-dom";
 
-import localization from '../localization/english.ts';
+import getTexts from '../localization/localization.ts';
 
 interface IRouteError {
     statusText: string;
@@ -8,8 +8,7 @@ interface IRouteError {
 }
 
 export default function ErrorPage404() {
-    const title = localization.errorPage.title;
-    const subTitle = localization.errorPage.subTitle;
+    const {title, subTitle} = getTexts().errorPage;
 
     const error:IRouteError = useRouteError() as IRouteError;
     console.error(error);

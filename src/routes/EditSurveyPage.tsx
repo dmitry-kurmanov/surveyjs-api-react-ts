@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import type { RootState } from '../store.ts'
 import { surveyjsAccessKey } from '../accessKey.ts'
-import localization from '../localization/english.ts';
+import getTexts from '../localization/localization.ts';
 import SurveyCreator from '../components/surveyCreator/SurveysCreator.tsx'
 import Error404Page from './Error404Page.tsx'
 import { ISurvey, updateSurveyJson } from '../slices/surveysSlice.ts'
@@ -23,7 +23,7 @@ export default function EditSurvey() {
     const dispatch = useDispatch();
     const [isSurveyInfoFetched, setIsSurveyInfoFetched] = useState(false);
 
-    const { goBackLinkText, surveyJsonLoadingText } = localization.editSurveyPage;
+    const { goBackLinkText, surveyJsonLoadingText } = getTexts().editSurveyPage;
 
     const surveyId = params.surveyId as string;
     const survey: ISurvey | undefined = surveys.find((s) => s.Id === surveyId);
