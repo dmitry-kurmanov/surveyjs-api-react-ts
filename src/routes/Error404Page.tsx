@@ -7,7 +7,7 @@ interface IRouteError {
     message: string;
 }
 
-export default function ErrorPage404() {
+export default function ErrorPage404({ customStatusText }: { customStatusText: string }) {
     const {title, subTitle} = getTexts().errorPage;
 
     const error:IRouteError = useRouteError() as IRouteError;
@@ -18,7 +18,7 @@ export default function ErrorPage404() {
           <h1>{title}</h1>
           <h2>{subTitle}</h2>
           <p>
-            <i>{error.statusText || error.message}</i>
+            <i>{customStatusText || error.statusText || error.message}</i>
           </p>
           <a href="/">Go To Home Page</a>
         </div>

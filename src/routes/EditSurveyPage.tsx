@@ -23,13 +23,13 @@ export default function EditSurvey() {
     const dispatch = useDispatch();
     const [isSurveyInfoFetched, setIsSurveyInfoFetched] = useState(false);
 
-    const { goBackLinkText, surveyJsonLoadingText } = getTexts().editSurveyPage;
+    const { goBackLinkText, surveyJsonLoadingText, surveyIsNotFound } = getTexts().editSurveyPage;
 
     const surveyId = params.surveyId as string;
     const survey: ISurvey | undefined = surveys.find((s) => s.Id === surveyId);
 
     if (typeof survey === "undefined") {
-        return <Error404Page />;
+        return <Error404Page customStatusText={surveyIsNotFound}/>;
     }
 
     useEffect(() => {

@@ -13,6 +13,7 @@ export default {
   },
   editSurveyPage: {
     goBackLinkText: "Go Back",
-    surveyJsonLoadingText: "Survey is loading..."
+    surveyJsonLoadingText: "Survey is loading...",
+    surveyIsNotFound: "Can't find the survey..."
   }
 };
