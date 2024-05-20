@@ -2,7 +2,7 @@ import { SurveyCreatorComponent, SurveyCreator } from "survey-creator-react";
 import "survey-core/defaultV2.min.css";
 import "survey-creator-core/survey-creator-core.min.css";
 
-import { ISurvey } from '../../slices/surveysSlice.ts'
+import { ISurvey } from '../../state-container/slices/surveysSlice.ts'
 import { surveyjsAccessKey } from '../../accessKey.ts'
 
 

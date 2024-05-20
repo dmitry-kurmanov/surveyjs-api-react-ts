@@ -3,8 +3,8 @@ import SurveyListItem from '../surveyListItem/SurveyListItem.tsx';
 
 import { useSelector, useDispatch } from 'react-redux'
 
-import type { RootState } from '../../store.ts'
-import { ISurvey, setSurveys } from '../../slices/surveysSlice.ts'
+import type { RootState } from '../../state-container/store.ts'
+import { ISurvey, setSurveys } from '../../state-container/slices/surveysSlice.ts'
 import { surveyjsAccessKey } from '../../accessKey.ts'
 
 import './SurveyList.scss';

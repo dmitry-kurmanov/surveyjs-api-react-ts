@@ -3,12 +3,12 @@ import { useParams } from 'react-router';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 
-import type { RootState } from '../store.ts'
+import type { RootState } from '../state-container/store.ts'
 import { surveyjsAccessKey } from '../accessKey.ts'
 import getTexts from '../localization/localization.ts';
 import SurveyCreator from '../components/surveyCreator/SurveysCreator.tsx'
 import Error404Page from './Error404Page.tsx'
-import { ISurvey, updateSurveyJson } from '../slices/surveysSlice.ts'
+import { ISurvey, updateSurveyJson } from '../state-container/slices/surveysSlice.ts'
 
 interface ISurveyInfo {
     Info: {

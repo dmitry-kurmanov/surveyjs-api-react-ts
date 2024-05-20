@@ -7,7 +7,7 @@ interface IRouteError {
     message: string;
 }
 
-export default function ErrorPage404({ customStatusText }: { customStatusText: string }) {
+export default function ErrorPage404({ customStatusText }: { customStatusText?: string }) {
     const {title, subTitle} = getTexts().errorPage;
 
     const error:IRouteError = useRouteError() as IRouteError;
