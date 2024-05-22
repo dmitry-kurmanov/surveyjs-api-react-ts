@@ -13,6 +13,7 @@ export default {
   },
   editSurveyPage: {
     goBackLinkText: "Назад",
-    surveyJsonLoadingText: "Опрос загружается..."
+    surveyJsonLoadingText: "Опрос загружается...",
+    surveyIsNotFound: "Опрос не найден..."
   }
 };

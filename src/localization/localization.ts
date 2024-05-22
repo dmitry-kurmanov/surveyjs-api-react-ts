@@ -1,8 +1,9 @@
 import en from "./english.ts";
 import ru from "./russian.ts";
 
-let allLocalizableTexts = {
-    en, ru
+let allLocalizableTexts: { [id: string] : typeof en } = {
+    "en": en, 
+    "ru": ru
 };
 
 let currentLocale = "en";
@@ -11,11 +12,11 @@ const getLocale = () => {
     return currentLocale;
 }
 
-const setLocale = (newLocale) => {
+const setLocale = (newLocale: string) => {
     currentLocale = newLocale
 }
 
-const getTexts = ():typeof en => {
+const getTexts = () => {
     return allLocalizableTexts[currentLocale];
 }
 
