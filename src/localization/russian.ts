@@ -1,4 +1,8 @@
-export default {
+import { registerLocale } from "./localization.ts";
+
+const name = "ru"
+
+const texts = {
   surveysList: {
     noSurveysText: 'Опросов пока ещё нет.',
     title: 'Мои Опросы'
@@ -17,3 +21,6 @@ export default {
     surveyIsNotFound: "Опрос не найден..."
   }
 };
+
+registerLocale(name, texts)
+export default texts

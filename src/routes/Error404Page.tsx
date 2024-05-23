@@ -1,14 +1,17 @@
 import { useRouteError } from "react-router-dom";
 
 import getTexts from '../localization/localization.ts';
+import { RootState } from "../state-container/store.ts";
+import { useSelector } from "react-redux";
 
 interface IRouteError {
     statusText: string;
     message: string;
 }
 
-export default function ErrorPage404({ customStatusText }: { customStatusText: string }) {
-    const {title, subTitle} = getTexts().errorPage;
+export default function ErrorPage404({ customStatusText }: { customStatusText?: string }) {
+    const locale = useSelector((state:RootState) => state.locale.value);
+    const {title, subTitle} = getTexts(locale).errorPage;
 
     const error:IRouteError = useRouteError() as IRouteError;
     console.error(error);

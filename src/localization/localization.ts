@@ -1,25 +1,13 @@
-import en from "./english.ts";
-import ru from "./russian.ts";
+import en from "./english.ts"
 
-let allLocalizableTexts: { [id: string] : typeof en } = {
-    "en": en, 
-    "ru": ru
-};
+const allTexts: { [name: string]: typeof en } = {}
 
-let currentLocale = "en";
-
-const getLocale = () => {
-    return currentLocale;
+export function registerLocale(name: string, texts: typeof en) {
+    allTexts[name] = texts
 }
 
-const setLocale = (newLocale: string) => {
-    currentLocale = newLocale
+const getTexts = (localeName: string) => {
+    return allTexts[localeName]
 }
 
-const getTexts = () => {
-    return allLocalizableTexts[currentLocale];
-}
-
-export default getTexts;
-
-export {getLocale, setLocale}
+export default getTexts

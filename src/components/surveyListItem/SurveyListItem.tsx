@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import './SurveyListItem.scss';
 
 import getTexts from '../../localization/localization.ts';
+import { RootState } from "../../state-container/store.ts";
+import { useSelector } from "react-redux";
 // import { surveyjsAccessKey } from "../../accessKey.ts";
 
 interface ISurveyListItem {
@@ -11,7 +13,8 @@ interface ISurveyListItem {
 }
 
 export default function SurveyListItem({ name, id }: ISurveyListItem) {
-  const {editLinkText, runButtonText} = getTexts().surveyListItem;
+  const locale = useSelector((state:RootState) => state.locale.value);
+  const {editLinkText, runButtonText} = getTexts(locale).surveyListItem;
 
   async function runSurvey(event: React.MouseEvent<HTMLButtonElement>) {
     // await fetch(`https://api.surveyjs.io/private/Surveys/publish?accessKey=${surveyjsAccessKey}&${id}`, {

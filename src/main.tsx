@@ -13,6 +13,9 @@ import RootPage from './routes/RootPage.tsx'
 import Error404Page from './routes/Error404Page.tsx';
 import EditSurveyPage from './routes/EditSurveyPage.tsx';
 
+import "./localization/english.ts";
+import "./localization/russian.ts";
+
 import './index.css'
 
 const router = createBrowserRouter([

@@ -18,12 +18,13 @@ interface ISurveyInfo {
 }
 
 export default function EditSurvey() {
+    const locale = useSelector((state:RootState) => state.locale.value);
     const surveys = useSelector((state: RootState) => state.surveys.value);
     const params = useParams();
     const dispatch = useDispatch();
     const [isSurveyInfoFetched, setIsSurveyInfoFetched] = useState(false);
 
-    const { goBackLinkText, surveyJsonLoadingText, surveyIsNotFound } = getTexts().editSurveyPage;
+    const { goBackLinkText, surveyJsonLoadingText, surveyIsNotFound } = getTexts(locale).editSurveyPage;
 
     const surveyId = params.surveyId as string;
     const survey: ISurvey | undefined = surveys.find((s) => s.Id === surveyId);
