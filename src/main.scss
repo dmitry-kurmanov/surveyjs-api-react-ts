@@ -3,10 +3,14 @@ html {
 }
 
 body {
+  margin: 0;
+  height: 100%;
+}
+
+#app {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin: 0;
   height: 100%;
 }
 

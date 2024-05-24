@@ -33,7 +33,7 @@ const router = createBrowserRouter([
   },
 ])
 
-ReactDOM.createRoot(document.body).render(
+ReactDOM.createRoot(document.getElementById("app")!).render(
   <React.StrictMode>
     <ReduxProvider store={store}>
       <Header />
