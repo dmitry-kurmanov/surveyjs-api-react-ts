@@ -1,0 +1,33 @@
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0;
+  height: 100%;
+}
+
+header {
+  height: 32px;
+  border: 1px solid #d3d3d3;
+  margin: 4px;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  height: 32px;
+  border: 1px solid #d3d3d3;
+  margin: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
