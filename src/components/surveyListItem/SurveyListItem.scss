@@ -1,7 +1,5 @@
-@import "../../variables.scss";
-
 .survey-list-item {
-  border: 1px solid $border-color;
+  border: 1px solid var(--border-color);
   padding: 8px 16px;
   box-sizing: border-box;
   border-radius: 8px;
@@ -32,24 +30,24 @@
 
 .survey-list-item__button {
   visibility: hidden;
-  color: $button-color-default;
+  color: var(--button-color-default);
   border: 1px solid;
-  border-color: $button-color-default;
+  border-color: var(--button-color-default);
   padding: 4px 24px;
   border-radius: 4px;
 
   &:hover {
-    background-color: $button-color-default;
+    background-color: var(--button-color-default);
     color: white;
-    border-color: $button-color-default;
+    border-color: var(--button-color-default);
   }
 }
 
 .survey-list-item__button--orange {
-  color: $button-color-orange;
-  border-color: $button-color-orange;
+  color: var(--button-color-orange);
+  border-color: var(--button-color-orange);
   &:hover {
-    background-color: $button-color-orange;
-    border-color: $button-color-orange;
+    background-color: var(--button-color-orange);
+    border-color: var(--button-color-orange);
   }
 }
