@@ -1,5 +1,7 @@
+@import "../../variables.scss";
+
 .survey-list-item {
-  border: 1px solid #d3d3d3;
+  border: 1px solid $border-color;
   padding: 8px 16px;
   box-sizing: border-box;
   border-radius: 8px;
@@ -20,11 +22,8 @@
 }
 
 .survey-list-item__name {
-  color: gray;
+  color: $text-color;
 }
-
-$button-color-default: #0077ed;
-$button-color-orange: #f8ab5e;
 
 .survey-list-item__buttons-container {
   display: flex;
@@ -34,7 +33,6 @@ $button-color-orange: #f8ab5e;
 .survey-list-item__button {
   visibility: hidden;
   color: $button-color-default;
-  background-color: white;
   border: 1px solid;
   border-color: $button-color-default;
   padding: 4px 24px;
