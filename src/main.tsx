@@ -18,7 +18,7 @@ import Footer from './components/footer/Footer.tsx'
 import "./localization/english.ts"
 import "./localization/russian.ts"
 
-import './normalize.scss'
+import './themes.scss'
 import './main.scss'
 
 const router = createBrowserRouter([
