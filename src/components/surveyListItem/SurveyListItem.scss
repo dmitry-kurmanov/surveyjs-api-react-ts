@@ -1,5 +1,5 @@
 .survey-list-item {
-  border: 1px solid var(--border-color);
+  border: 1px solid;
   padding: 8px 16px;
   box-sizing: border-box;
   border-radius: 8px;
@@ -20,34 +20,9 @@
 }
 
 .survey-list-item__name {
-  color: var(--text-color);
 }
 
 .survey-list-item__buttons-container {
   display: flex;
   gap: 16px;
-}
-
-.survey-list-item__button {
-  visibility: hidden;
-  color: var(--button-color-default);
-  border: 1px solid;
-  border-color: var(--button-color-default);
-  padding: 4px 24px;
-  border-radius: 4px;
-
-  &:hover {
-    background-color: var(--button-color-default);
-    color: white;
-    border-color: var(--button-color-default);
-  }
-}
-
-.survey-list-item__button--orange {
-  color: var(--button-color-orange);
-  border-color: var(--button-color-orange);
-  &:hover {
-    background-color: var(--button-color-orange);
-    border-color: var(--button-color-orange);
-  }
 }

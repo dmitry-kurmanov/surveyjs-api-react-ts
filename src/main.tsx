@@ -15,6 +15,9 @@ import Error404Page from './routes/Error404Page.tsx'
 import EditSurveyPage from './routes/EditSurveyPage.tsx'
 import Footer from './components/footer/Footer.tsx'
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
 import "./localization/english.ts"
 import "./localization/russian.ts"
 
@@ -33,14 +36,23 @@ const router = createBrowserRouter([
   },
 ])
 
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 ReactDOM.createRoot(document.getElementById("app")!).render(
   <React.StrictMode>
     <ReduxProvider store={store}>
-      <Header />
-      <main>
-        <RouterProvider router={router} />
-      </main>
-      <Footer />
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <Header />
+        <main>
+          <RouterProvider router={router} />
+        </main>
+        <Footer />
+      </ThemeProvider>
     </ReduxProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

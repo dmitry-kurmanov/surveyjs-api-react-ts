@@ -5,6 +5,8 @@ import './SurveyListItem.scss';
 import getTexts from '../../localization/localization.ts';
 import { RootState } from "../../state-container/store.ts";
 import { useSelector } from "react-redux";
+
+import Button from '@mui/material/Button';
 // import { surveyjsAccessKey } from "../../accessKey.ts";
 
 interface ISurveyListItem {
@@ -27,8 +29,8 @@ export default function SurveyListItem({ name, id }: ISurveyListItem) {
     <li className="survey-list-item">
       <span className="survey-list-item__name">{name}</span>
       <div className="survey-list-item__buttons-container">
-        <button className="survey-list-item__button survey-list-item__button--orange" onClick={runSurvey}>{runButtonText}</button>
-        <Link to={`/edit-survey/${id}`} className="survey-list-item__button">{editLinkText}</Link>
+        <Button variant="contained" color="secondary" onClick={runSurvey}>{runButtonText}</Button>
+        <Button variant="contained" href={`/edit-survey/${id}`}>{editLinkText}</Button>
       </div>
     </li>
   );
