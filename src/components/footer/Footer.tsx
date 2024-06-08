@@ -1,4 +1,5 @@
 import Link from '@mui/material/Link';
+import './Footer.scss';
 
 export default function Footer() {
     return <footer>
