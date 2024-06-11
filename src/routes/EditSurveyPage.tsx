@@ -18,7 +18,7 @@ interface ISurveyInfo {
 }
 
 export default function EditSurvey() {
-    const locale = useSelector((state:RootState) => state.locale.value);
+    const locale = useSelector((state:RootState) => state.settings.value.locale);
     const surveys = useSelector((state: RootState) => state.surveys.value);
     const params = useParams();
     const dispatch = useDispatch();

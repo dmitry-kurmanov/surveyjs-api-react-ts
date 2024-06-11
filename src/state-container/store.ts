@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import surveysReducer from './slices/surveysSlice'
-import localeReducer from "./slices/localeSlice"
+import settingsReducer from "./slices/settingsSlice"
 
 const store = configureStore({
   reducer: {
     surveys: surveysReducer,
-    locale: localeReducer,
+    settings: settingsReducer,
   }
 })
 

@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react'
-import ReactDOM from 'react-dom/client'
 
-import { Provider as ReduxProvider } from 'react-redux'
-import store from './state-container/store.ts'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from './state-container/store.ts'
 
 import {
   createBrowserRouter,
@@ -23,6 +22,7 @@ import "./localization/russian.ts"
 
 import './App.scss'
 import { useMediaQuery } from '@mui/material'
+import { setTheme } from './state-container/slices/settingsSlice.ts'
 
 const router = createBrowserRouter([
     {
@@ -37,20 +37,19 @@ const router = createBrowserRouter([
   ])
 
 export default function App() {
+  const currentTheme = useSelector((state: RootState) => state.settings.value.theme);
+  const dispatch = useDispatch();
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: prefersDarkMode ? 'dark' : 'light',
-        },
-      }),
-    [prefersDarkMode],
-  )
-
+  const userTheme = prefersDarkMode ? 'dark' : 'light'
+  if (userTheme !== currentTheme) {
+    dispatch(setTheme(userTheme))
+  }
+  const theme = createTheme({
+    palette: {
+      mode: currentTheme === "dark" ? 'dark' : 'light',
+    },
+  });
   return (
-    <React.StrictMode>
-    <ReduxProvider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Header />
@@ -59,7 +58,5 @@ export default function App() {
         </main>
         <Footer />
       </ThemeProvider>
-    </ReduxProvider>
-  </React.StrictMode>
   );
 }

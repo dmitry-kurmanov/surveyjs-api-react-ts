@@ -12,7 +12,7 @@ import './SurveyList.scss';
 import getTexts from '../../localization/localization.ts';
 
 export default function SurveysList() {
-  const locale = useSelector((state:RootState) => state.locale.value);
+  const locale = useSelector((state:RootState) => state.settings.value.locale);
   const surveys = useSelector((state:RootState) => state.surveys.value);
   const dispatch = useDispatch();
 

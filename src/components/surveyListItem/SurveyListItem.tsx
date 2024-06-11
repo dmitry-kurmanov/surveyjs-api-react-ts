@@ -15,7 +15,7 @@ interface ISurveyListItem {
 }
 
 export default function SurveyListItem({ name, id }: ISurveyListItem) {
-  const locale = useSelector((state:RootState) => state.locale.value);
+  const locale = useSelector((state:RootState) => state.settings.value.locale);
   const {editLinkText, runButtonText} = getTexts(locale).surveyListItem;
 
   async function runSurvey(event: React.MouseEvent<HTMLButtonElement>) {

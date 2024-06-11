@@ -10,7 +10,7 @@ interface IRouteError {
 }
 
 export default function ErrorPage404({ customStatusText }: { customStatusText?: string }) {
-    const locale = useSelector((state:RootState) => state.locale.value);
+    const locale = useSelector((state:RootState) => state.settings.value.locale);
     const {title, subTitle} = getTexts(locale).errorPage;
 
     const error:IRouteError = useRouteError() as IRouteError;

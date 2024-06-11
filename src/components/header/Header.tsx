@@ -1,11 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../state-container/store.ts';
-import { setLocale } from "../../state-container/slices/localeSlice.ts"
+import { setLocale, setTheme } from "../../state-container/slices/settingsSlice.ts"
 import "./Header.scss";
+import { IconButton, useTheme } from '@mui/material';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 export default function Header() {
-  const currentLocale = useSelector((state: RootState) => state.locale.value);
+  const currentLocale = useSelector((state: RootState) => state.settings.value.locale);
+  //const currentTheme = useSelector((state: RootState) => state.settings.value.locale);
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   return <header>
     <label>
@@ -14,5 +19,11 @@ export default function Header() {
         <option value="ru">RU</option>
       </select>
     </label>
+    <div className='theme-switcher'>
+      {theme.palette.mode} mode
+      <IconButton /*onClick={colorMode.toggleColorMode}*/ color="inherit">
+        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+      </IconButton>
+    </div>
   </header>
 }

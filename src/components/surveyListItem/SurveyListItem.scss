@@ -7,6 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
 
   &:hover {
     .survey-list-item__name {
@@ -20,6 +21,7 @@
 }
 
 .survey-list-item__name {
+  word-break: break-word;
 }
 
 .survey-list-item__buttons-container {
