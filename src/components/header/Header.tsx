@@ -17,7 +17,11 @@ export default function Header() {
 
   return <header>
     <label>
-      <select name="locale" defaultValue={currentLocale} onChange={e => dispatch(setLocale(e.target.value))}>
+      <select name="locale" defaultValue={currentLocale} onChange={e => {
+        const newLocale = e.target.value;
+        document.documentElement.lang = newLocale; 
+        dispatch(setLocale(newLocale))}
+      }>
         <option value="en">EN</option>
         <option value="ru">RU</option>
       </select>
