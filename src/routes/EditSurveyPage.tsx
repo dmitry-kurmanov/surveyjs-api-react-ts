@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
+import Link from '@mui/material/Link';
 
 import type { RootState } from '../state-container/store.ts'
 import { surveyjsAccessKey } from '../accessKey.ts'
@@ -49,7 +50,7 @@ export default function EditSurvey() {
     if (!isSurveyInfoFetched) return <div>{surveyJsonLoadingText}</div>;
 
     return <div>
-        <Link to="/">{goBackLinkText}</Link>
+        <Link component={RouterLink} to="/">{goBackLinkText}</Link>
         <SurveyCreator survey={survey} />
     </div>
 }

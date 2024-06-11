@@ -17,7 +17,8 @@ const texts = {
   },
   errorPage: {
     title: "Oops!",
-    subTitle: "Sorry, an unexpected error has occurred."
+    subTitle: "Sorry, an unexpected error has occurred.",
+    goToHome: "Go To Home Page"
   },
   editSurveyPage: {
     goBackLinkText: "Go Back",

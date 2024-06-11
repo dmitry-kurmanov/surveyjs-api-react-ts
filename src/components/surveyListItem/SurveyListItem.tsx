@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Button from '@mui/material/Button';
 
 import './SurveyListItem.scss';
-
 import getTexts from '../../localization/localization.ts';
 import { RootState } from "../../state-container/store.ts";
-import { useSelector } from "react-redux";
 
-import Button from '@mui/material/Button';
 // import { surveyjsAccessKey } from "../../accessKey.ts";
 
 interface ISurveyListItem {
@@ -30,7 +29,7 @@ export default function SurveyListItem({ name, id }: ISurveyListItem) {
       <span className="survey-list-item__name">{name}</span>
       <div className="survey-list-item__buttons-container">
         <Button variant="contained" color="secondary" onClick={runSurvey}>{runButtonText}</Button>
-        <Button variant="contained" href={`/edit-survey/${id}`}>{editLinkText}</Button>
+        <Button variant="contained" component={RouterLink} to={`/edit-survey/${id}`}>{editLinkText}</Button>
       </div>
     </li>
   );

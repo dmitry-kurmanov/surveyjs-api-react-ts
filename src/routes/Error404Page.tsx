@@ -1,4 +1,5 @@
-import { useRouteError } from "react-router-dom";
+import { Link as RouterLink, useRouteError } from "react-router-dom";
+import Link from '@mui/material/Link';
 
 import getTexts from '../localization/localization.ts';
 import { RootState } from "../state-container/store.ts";
@@ -11,7 +12,7 @@ interface IRouteError {
 
 export default function ErrorPage404({ customStatusText }: { customStatusText?: string }) {
     const locale = useSelector((state:RootState) => state.settings.value.locale);
-    const {title, subTitle} = getTexts(locale).errorPage;
+    const {title, subTitle, goToHome} = getTexts(locale).errorPage;
 
     const error:IRouteError = useRouteError() as IRouteError;
     console.error(error);
@@ -23,7 +24,7 @@ export default function ErrorPage404({ customStatusText }: { customStatusText?: 
           <p>
             <i>{customStatusText || error.statusText || error.message}</i>
           </p>
-          <a href="/">Go To Home Page</a>
+          <Link to="/" component={RouterLink}>{goToHome}</Link>
         </div>
       );
 }

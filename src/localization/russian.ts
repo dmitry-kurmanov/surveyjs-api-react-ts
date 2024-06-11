@@ -17,7 +17,8 @@ const texts = {
   },
   errorPage: {
     title: "Ой!",
-    subTitle: "Извините, что-то пошло не так..."
+    subTitle: "Извините, что-то пошло не так...",
+    goToHome: "Вернуться на главную"
   },
   editSurveyPage: {
     goBackLinkText: "Назад",
