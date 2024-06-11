@@ -3,12 +3,16 @@ import { registerLocale } from "./localization.ts";
 const name = "ru"
 
 const texts = {
+  settings: {
+    lightMode: "светлая тема",
+    darkMode: "тёмная тема"
+  },
   surveysList: {
     noSurveysText: 'Опросов пока ещё нет.',
     title: 'Мои Опросы'
   },
   surveyListItem: {
-    editLinkText: 'Редактировать',
+    editLinkText: 'Настроить',
     runButtonText: "Запустить"
   },
   errorPage: {

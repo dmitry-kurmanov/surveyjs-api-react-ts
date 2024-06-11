@@ -1,16 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../../state-container/store.ts';
-import { setLocale, setTheme } from "../../state-container/slices/settingsSlice.ts"
-import "./Header.scss";
 import { IconButton, useTheme } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
+import { RootState } from '../../state-container/store.ts';
+import { setLocale, setTheme } from "../../state-container/slices/settingsSlice.ts"
+import "./Header.scss";
+import getTexts from '../../localization/localization.ts';
+
 export default function Header() {
   const currentLocale = useSelector((state: RootState) => state.settings.value.locale);
-  //const currentTheme = useSelector((state: RootState) => state.settings.value.locale);
+  const currentTheme = useSelector((state: RootState) => state.settings.value.theme);
   const dispatch = useDispatch();
   const theme = useTheme();
+  const {darkMode, lightMode} = getTexts(currentLocale).settings;
 
   return <header>
     <label>
@@ -20,8 +23,8 @@ export default function Header() {
       </select>
     </label>
     <div className='theme-switcher'>
-      {theme.palette.mode} mode
-      <IconButton /*onClick={colorMode.toggleColorMode}*/ color="inherit">
+      {theme.palette.mode === 'dark' ? darkMode : lightMode}
+      <IconButton onClick={() => dispatch(setTheme(currentTheme === 'dark' ? 'light': 'dark'))} color="inherit">
         {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
     </div>

@@ -23,6 +23,7 @@ import "./localization/russian.ts"
 import './App.scss'
 import { useMediaQuery } from '@mui/material'
 import { setTheme } from './state-container/slices/settingsSlice.ts'
+import { current } from '@reduxjs/toolkit'
 
 const router = createBrowserRouter([
     {
@@ -39,11 +40,12 @@ const router = createBrowserRouter([
 export default function App() {
   const currentTheme = useSelector((state: RootState) => state.settings.value.theme);
   const dispatch = useDispatch();
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
-  const userTheme = prefersDarkMode ? 'dark' : 'light'
-  if (userTheme !== currentTheme) {
+
+  if (currentTheme === null) {
+    const userTheme = getUserPreferredTheme()
     dispatch(setTheme(userTheme))
   }
+
   const theme = createTheme({
     palette: {
       mode: currentTheme === "dark" ? 'dark' : 'light',
@@ -59,4 +61,9 @@ export default function App() {
         <Footer />
       </ThemeProvider>
   );
+}
+
+function getUserPreferredTheme() {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+  return prefersDarkMode ? 'dark' : 'light'
 }

@@ -3,6 +3,10 @@ import { registerLocale } from "./localization.ts";
 const name = "en"
 
 const texts = {
+  settings: {
+    lightMode: "light mode",
+    darkMode: "dark mode"
+  },
   surveysList: {
     noSurveysText: 'There is no any survey yet.',
     title: 'My Surveys'

@@ -3,14 +3,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 export interface ISettingsState {
     value: {
         locale: string,
-        theme: string
+        theme: string | null
     }
 }
 
 const initialState: ISettingsState = {
     value: {
         locale: "en",
-        theme: "light"
+        theme: null
     }
 };
 
