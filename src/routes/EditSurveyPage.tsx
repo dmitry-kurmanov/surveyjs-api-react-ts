@@ -49,8 +49,5 @@ export default function EditSurvey() {
 
     if (!isSurveyInfoFetched) return <div>{surveyJsonLoadingText}</div>;
 
-    return <div>
-        <Link component={RouterLink} to="/">{goBackLinkText}</Link>
-        <SurveyCreator survey={survey} />
-    </div>
+    return <SurveyCreator survey={survey} />
 }

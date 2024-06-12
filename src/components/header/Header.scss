@@ -3,10 +3,23 @@ header {
   margin: 4px;
   padding: 4px 16px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 16px;
   box-sizing: content-box;
+}
+
+.logo {
+  .MuiLink-root {
+    display: flex;
+  }
+}
+
+.settings-container {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .theme-switcher {
