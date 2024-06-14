@@ -1,69 +1,68 @@
-import React, { useMemo } from 'react'
+import React, { useMemo } from "react";
 
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from './state-container/store.ts'
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./state-container/store.ts";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Header from './components/header/Header.tsx'
-import RootPage from './routes/RootPage.tsx'
-import Error404Page from './routes/Error404Page.tsx'
-import EditSurveyPage from './routes/EditSurveyPage.tsx'
-import Footer from './components/footer/Footer.tsx'
+import Header from "./components/header/Header.tsx";
+import RootPage from "./routes/RootPage.tsx";
+import Error404Page from "./routes/Error404Page.tsx";
+import EditSurveyPage from "./routes/EditSurveyPage.tsx";
+import Footer from "./components/footer/Footer.tsx";
 
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
-import "./localization/english.ts"
-import "./localization/russian.ts"
+import "./localization/english.ts";
+import "./localization/russian.ts";
 
-import './App.scss'
-import { useMediaQuery } from '@mui/material'
-import { setTheme } from './state-container/slices/settingsSlice.ts'
-import { current } from '@reduxjs/toolkit'
+import "./App.scss";
+import { useMediaQuery } from "@mui/material";
+import { setTheme } from "./state-container/slices/settingsSlice.ts";
+import { current } from "@reduxjs/toolkit";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <RootPage />,
-      errorElement: <Error404Page />
-    },
-    {
-      path: "edit-survey/:surveyId",
-      element: <EditSurveyPage />,
-    },
-  ])
+  {
+    path: "/",
+    element: <RootPage />,
+    errorElement: <Error404Page />,
+  },
+  {
+    path: "edit-survey/:surveyId",
+    element: <EditSurveyPage />,
+  },
+]);
 
 export default function App() {
-  const currentTheme = useSelector((state: RootState) => state.settings.value.theme);
+  const currentTheme = useSelector(
+    (state: RootState) => state.settings.value.theme,
+  );
   const dispatch = useDispatch();
 
   if (currentTheme === null) {
-    const userTheme = getUserPreferredTheme()
-    dispatch(setTheme(userTheme))
+    const userTheme = getUserPreferredTheme();
+    dispatch(setTheme(userTheme));
   }
 
   const theme = createTheme({
     palette: {
-      mode: currentTheme === "dark" ? 'dark' : 'light',
+      mode: currentTheme === "dark" ? "dark" : "light",
     },
   });
   return (
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Header />
-        <main>
-          <RouterProvider router={router} />
-        </main>
-        <Footer />
-      </ThemeProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Header />
+      <main>
+        <RouterProvider router={router} />
+      </main>
+      <Footer />
+    </ThemeProvider>
   );
 }
 
 function getUserPreferredTheme() {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
-  return prefersDarkMode ? 'dark' : 'light'
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  return prefersDarkMode ? "dark" : "light";
 }

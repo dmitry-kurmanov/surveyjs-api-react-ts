@@ -1,9 +1,11 @@
-import SurveysList from '../components/surveyList/SurveysList.tsx'
+import SurveysList from "../components/surveyList/SurveysList.tsx";
 
 function RootPage() {
-  return <>
+  return (
+    <>
       <SurveysList />
-  </>
+    </>
+  );
 }
 
 export default RootPage;
