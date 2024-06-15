@@ -50,10 +50,13 @@ export default function SurveysCreator({ survey }: { survey: ISurvey }) {
       callback(saveNo, true);
     });
   };
+  (window as any).creator = creator;
 
   return (
     <div className="survey-creator-container">
-      <h1>{survey.Name}</h1>
+      <div className="survey-creator-info">
+        <h3 className="survey-list-name">{survey.Name}</h3>
+      </div>
       <SurveyCreatorComponent creator={creator} />
     </div>
   );

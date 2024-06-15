@@ -3,4 +3,27 @@
   flex-direction: column;
   flex: 1;
   align-self: stretch;
+  overflow: hidden;
+  gap: 8px;
+}
+
+.survey-creator-info {
+  //display: flex;
+}
+
+.survey-list-name {
+  margin: 0;
+  width: 50%;
+}
+
+.svc-creator {
+  border: 1px solid;
+  .svc-full-container.svc-full-container {
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+  }
+  .svc-creator__banner {
+    background: transparent;
+  }
 }
