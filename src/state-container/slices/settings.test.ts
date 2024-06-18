@@ -1,11 +1,11 @@
 import { expect, test } from "vitest";
 
-import { createNewAction } from "../../utils/for-tests.ts";
+import { createNewAction } from "../../utils/forTests.ts";
 import {
   ISettingsState,
   setLocaleReducer,
   setThemeReducer,
-} from "./settingsSlice.ts";
+} from "./settings.ts";
 
 const state: ISettingsState = {
   value: {

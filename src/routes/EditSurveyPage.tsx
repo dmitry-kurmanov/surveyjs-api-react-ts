@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "@mui/material/Link";
 
 import type { RootState } from "../state-container/store.ts";
-import { surveyjsAccessKey } from "../accessKey.ts";
+import { surveyjsAccessKey } from "../state-container/api-slices/surveyjsAPI.ts";
 import getTexts from "../localization/localization.ts";
 import SurveyCreator from "../components/surveyCreator/SurveysCreator.tsx";
 import Error404Page from "./Error404Page.tsx";
 import {
   ISurvey,
   updateSurveyJson,
-} from "../state-container/slices/surveysSlice.ts";
+} from "../state-container/slices/surveys.ts";
 
 interface ISurveyInfo {
   Info: {

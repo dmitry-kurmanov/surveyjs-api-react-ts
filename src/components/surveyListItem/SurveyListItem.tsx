@@ -6,7 +6,7 @@ import "./SurveyListItem.scss";
 import getTexts from "../../localization/localization.ts";
 import { RootState } from "../../state-container/store.ts";
 
-// import { surveyjsAccessKey } from "../../accessKey.ts";
+// import { surveyjsAccessKey } from "../../state-container/api-slices/surveyjsAPI.ts";
 
 interface ISurveyListItem {
   name: string;

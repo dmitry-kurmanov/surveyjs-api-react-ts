@@ -1,12 +1,12 @@
 import { expect, test } from "vitest";
 
-import { createNewAction } from "../../utils/for-tests.ts";
+import { createNewAction } from "../../utils/forTests.ts";
 import {
   ISurvey,
   ISurveyState,
   setSurveysReducer,
   updateSurveyJsonReducer,
-} from "./surveysSlice.ts";
+} from "./surveys.ts";
 
 const newSurveys: ISurvey[] = [
   { Id: "0", Name: "name0", Json: "json0" },

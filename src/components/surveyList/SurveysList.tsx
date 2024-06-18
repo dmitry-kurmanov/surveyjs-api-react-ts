@@ -4,11 +4,8 @@ import SurveyListItem from "../surveyListItem/SurveyListItem.tsx";
 import { useSelector, useDispatch } from "react-redux";
 
 import type { RootState } from "../../state-container/store.ts";
-import {
-  ISurvey,
-  setSurveys,
-} from "../../state-container/slices/surveysSlice.ts";
-import { surveyjsAccessKey } from "../../accessKey.ts";
+import { ISurvey, setSurveys } from "../../state-container/slices/surveys.ts";
+import { surveyjsAccessKey } from "../../state-container/api-slices/surveyjsAPI.ts";
 
 import "./SurveyList.scss";
 

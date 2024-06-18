@@ -19,8 +19,7 @@ import "./localization/russian.ts";
 
 import "./App.scss";
 import { useMediaQuery } from "@mui/material";
-import { setTheme } from "./state-container/slices/settingsSlice.ts";
-import { current } from "@reduxjs/toolkit";
+import { setTheme } from "./state-container/slices/settings.ts";
 
 const router = createBrowserRouter([
   {

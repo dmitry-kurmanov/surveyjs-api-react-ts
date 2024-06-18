@@ -6,10 +6,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import Link from "@mui/material/Link";
 
 import { RootState } from "../../state-container/store.ts";
-import {
-  setLocale,
-  setTheme,
-} from "../../state-container/slices/settingsSlice.ts";
+import { setLocale, setTheme } from "../../state-container/slices/settings.ts";
 import "./Header.scss";
 import getTexts from "../../localization/localization.ts";
 
