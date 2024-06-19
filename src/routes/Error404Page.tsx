@@ -22,7 +22,7 @@ export default function ErrorPage404({
   console.error(error);
 
   return (
-    <div id="error-page">
+    <section id="error-page">
       <h1>{title}</h1>
       <h2>{subTitle}</h2>
       <p>
@@ -31,6 +31,6 @@ export default function ErrorPage404({
       <Link to="/" component={RouterLink}>
         {goToHome}
       </Link>
-    </div>
+    </section>
   );
 }

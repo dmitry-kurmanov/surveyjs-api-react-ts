@@ -53,11 +53,11 @@ export default function SurveysCreator({ survey }: { survey: ISurvey }) {
   (window as any).creator = creator;
 
   return (
-    <div className="survey-creator-container">
+    <section className="survey-creator-container">
       <div className="survey-creator-info">
         <h3 className="survey-list-name">{survey.Name}</h3>
       </div>
       <SurveyCreatorComponent creator={creator} />
-    </div>
+    </section>
   );
 }

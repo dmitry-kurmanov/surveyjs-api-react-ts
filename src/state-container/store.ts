@@ -1,13 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+import { apiSlice } from "./api-slices/surveyjsAPI";
+
 import surveysReducer from "./slices/surveys";
 import settingsReducer from "./slices/settings";
 
 const store = configureStore({
   reducer: {
+    [apiSlice.reducerPath]: apiSlice.reducer,
     surveys: surveysReducer,
     settings: settingsReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
 });
 
 export default store;

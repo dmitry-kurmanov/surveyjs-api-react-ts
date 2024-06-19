@@ -5,7 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "@mui/material/Link";
 
 import type { RootState } from "../state-container/store.ts";
-import { surveyjsAccessKey } from "../state-container/api-slices/surveyjsAPI.ts";
+import {
+  surveyjsAccessKey,
+  useGetActiveSurveysQuery,
+} from "../state-container/api-slices/surveyjsAPI.ts";
 import getTexts from "../localization/localization.ts";
 import SurveyCreator from "../components/surveyCreator/SurveysCreator.tsx";
 import Error404Page from "./Error404Page.tsx";
@@ -23,7 +26,17 @@ interface ISurveyInfo {
 
 export default function EditSurvey() {
   const locale = useSelector((state: RootState) => state.settings.value.locale);
-  const surveys = useSelector((state: RootState) => state.surveys.value);
+  //const surveys = useSelector((state: RootState) => state.surveys.value);
+  const {
+    data: surveys,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetActiveSurveysQuery();
+
+  if (isLoading || isError || typeof surveys === "undefined") return;
+
   const params = useParams();
   const dispatch = useDispatch();
   const [isSurveyInfoFetched, setIsSurveyInfoFetched] = useState(false);

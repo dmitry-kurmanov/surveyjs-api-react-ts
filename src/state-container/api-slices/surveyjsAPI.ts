@@ -1,6 +1,8 @@
 // Import the RTK Query methods from the React-specific entry point
 import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
 
+import { ISurvey } from "../slices/surveys";
+
 // just test key
 // need encryption for the real one
 export const surveyjsAccessKey = "f60db1fb75f440eaaddc46bfca1a8c03";
@@ -20,7 +22,7 @@ export const apiSlice = createApi({
   // The "endpoints" represent operations and requests for this server
   endpoints: (builder) => ({
     // The `getPosts` endpoint is a "query" operation that returns data
-    getActiveSurveys: builder.query({
+    getActiveSurveys: builder.query<ISurvey[], void>({
       // The URL for the request is '/fakeApi/posts'
       query: () => `/getActive?accessKey=${surveyjsAccessKey}`,
     }),
