@@ -19,7 +19,6 @@ export default function ErrorPage404({
   const { title, subTitle, goToHome } = getTexts(locale).errorPage;
 
   const error: IRouteError = useRouteError() as IRouteError;
-  console.error(error);
 
   return (
     <section id="error-page">

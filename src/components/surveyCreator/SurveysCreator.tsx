@@ -5,7 +5,7 @@ import "survey-creator-core/survey-creator-core.i18n";
 import "survey-creator-core/i18n/russian";
 import { useSelector } from "react-redux";
 
-import { ISurvey } from "../../state-container/slices/surveys.ts";
+import { ISurvey } from "../../state-container/api-slices/surveyjsAPI.ts";
 import { surveyjsAccessKey } from "../../state-container/api-slices/surveyjsAPI.ts";
 import { RootState } from "../../state-container/store.ts";
 import "./SurveysCreator.scss";

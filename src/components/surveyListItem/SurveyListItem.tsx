@@ -6,8 +6,6 @@ import "./SurveyListItem.scss";
 import getTexts from "../../localization/localization.ts";
 import { RootState } from "../../state-container/store.ts";
 
-// import { surveyjsAccessKey } from "../../state-container/api-slices/surveyjsAPI.ts";
-
 interface ISurveyListItem {
   name: string;
   id: string;
@@ -18,9 +16,6 @@ export default function SurveyListItem({ name, id }: ISurveyListItem) {
   const { editLinkText, runButtonText } = getTexts(locale).surveyListItem;
 
   async function runSurvey(event: React.MouseEvent<HTMLButtonElement>) {
-    // await fetch(`https://api.surveyjs.io/private/Surveys/publish?accessKey=${surveyjsAccessKey}&${id}`, {
-    //   method: "PUT",
-    // })
     window.open(`https://surveyjs.io/published?id=${id}`, "_blank");
   }
 

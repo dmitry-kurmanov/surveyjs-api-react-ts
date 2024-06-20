@@ -22,7 +22,6 @@ const texts = {
   },
   editSurveyPage: {
     goBackLinkText: "Назад",
-    surveyJsonLoadingText: "Опрос загружается...",
     surveyIsNotFound: "Опрос не найден...",
   },
 };

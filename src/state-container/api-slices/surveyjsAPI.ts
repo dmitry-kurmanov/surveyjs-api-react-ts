@@ -1,11 +1,15 @@
 // Import the RTK Query methods from the React-specific entry point
 import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
 
-import { ISurvey } from "../slices/surveys";
-
 // just test key
 // need encryption for the real one
 export const surveyjsAccessKey = "f60db1fb75f440eaaddc46bfca1a8c03";
+
+export interface ISurvey {
+  Id: string;
+  Name: string;
+  Json: string;
+}
 
 const baseUrl = "https://api.surveyjs.io/private/Surveys";
 const baseQuery = fetchBaseQuery({
