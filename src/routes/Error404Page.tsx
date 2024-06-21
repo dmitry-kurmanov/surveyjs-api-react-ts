@@ -25,7 +25,11 @@ export default function ErrorPage404({
       <h1>{title}</h1>
       <h2>{subTitle}</h2>
       <p>
-        <i>{customStatusText || error.statusText || error.message}</i>
+        <i>
+          {customStatusText ||
+            (error && error.statusText) ||
+            (error && error.message)}
+        </i>
       </p>
       <Link to="/" component={RouterLink}>
         {goToHome}

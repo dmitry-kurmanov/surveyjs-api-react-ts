@@ -21,59 +21,35 @@ interface ISurveyInfo {
 }
 
 export default function EditSurvey() {
+  const params = useParams();
+  const surveyId = params.surveyId as string;
+
   const locale = useSelector((state: RootState) => state.settings.value.locale);
+
   const { surveyIsNotFound } = getTexts(locale).editSurveyPage;
-  const {
-    data: surveys,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-  } = useGetActiveSurveysQuery();
+  const { survey, isLoading, isSuccess, isError, error } =
+    useGetActiveSurveysQuery(undefined, {
+      selectFromResult: ({ data, isLoading, isSuccess, isError, error }) => ({
+        survey: data?.find((survey: ISurvey) => survey.Id === surveyId),
+        isLoading,
+        isSuccess,
+        isError,
+        error,
+      }),
+    });
 
-  let content;
+  if (isLoading) return <CircularProgress />;
 
-  if (isLoading) {
-    content = <CircularProgress />;
-  } else if (isError) {
-    content = <Error404Page customStatusText={error.toString()} />;
-  } else if (isSuccess && typeof survey === "undefined") {
-    <Error404Page customStatusText={surveyIsNotFound} />;
-  } else if (isSuccess && typeof survey !== "undefined") {
-  } else {
-    content = <Error404Page />;
-  }
+  if (isError)
+    return (
+      <Error404Page customStatusText={(error && error.toString()) || ""} />
+    );
 
-  // if (isError || typeof surveys === "undefined") return;
+  if (isSuccess && typeof survey === "undefined")
+    return <Error404Page customStatusText={surveyIsNotFound} />;
 
-  // const params = useParams();
-  // const dispatch = useDispatch();
-  // const [isSurveyInfoFetched, setIsSurveyInfoFetched] = useState(false);
+  if (isSuccess && typeof survey !== "undefined")
+    return <SurveyCreator survey={survey} />;
 
-  // const surveyId = params.surveyId as string;
-  // const survey: ISurvey | undefined = surveys.find((s) => s.Id === surveyId);
-
-  // if (typeof survey === "undefined") {
-  //   return <Error404Page customStatusText={surveyIsNotFound} />;
-  // }
-
-  // useEffect(() => {
-  //   getSurveyJson(surveyId);
-  // }, []);
-
-  // async function getSurveyJson(id: string) {
-  //   const data = await fetch(
-  //     `https://api.surveyjs.io/private/Surveys/getSurveyInfo?accessKey=${surveyjsAccessKey}&surveyId=${id}`,
-  //   );
-  //   let dataJson: ISurveyInfo = await data.json();
-  //   if (!isSurveyInfoFetched) {
-  //     /*dispatch(updateSurveyJson({ Id: id, Json: dataJson.Json }));*/
-  //   }
-  //   setIsSurveyInfoFetched(true);
-  // }
-
-  // if (!isSurveyInfoFetched) return <div>{surveyJsonLoadingText}</div>;
-  // return <SurveyCreator survey={survey} />;
-
-  return <section>{content}</section>;
+  return <Error404Page />;
 }
