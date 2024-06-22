@@ -38,7 +38,7 @@ export const apiSlice = createApi({
       // The URL for the request
       query: () => `/getActive?accessKey=${surveyjsAccessKey}`,
     }),
-    getSurveyInfo: builder.query<ISurveyInfo, void>({
+    getSurveyInfo: builder.query<ISurveyInfo, string>({
       query: surveyId => `/getSurveyInfo?accessKey=${surveyjsAccessKey}&surveyId=${surveyId}`,
     }),
   }),

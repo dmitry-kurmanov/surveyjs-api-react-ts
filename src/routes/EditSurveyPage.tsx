@@ -20,21 +20,36 @@ export default function EditSurvey() {
   const locale = useSelector((state: RootState) => state.settings.value.locale);
 
   const { surveyIsNotFound } = getTexts(locale).editSurveyPage;
-  const { data: surveyInfo, isLoading, isSuccess, isError, error } =
-    useGetSurveyInfoQuery();
+  const { data: surveyInfo, isLoading: isLoading1, isSuccess: isSuccess1, isError: isError1, error: error1 } =
+    useGetSurveyInfoQuery(surveyId);
 
-  if (isLoading) return <CircularProgress />;
+  const { survey, isLoading: isLoading2, isSuccess: isSuccess2, isError: isError2, error: error2 } =
+    useGetActiveSurveysQuery(undefined, {
+      selectFromResult: ({ data, isLoading, isSuccess, isError, error }) => ({
+        survey: data?.find((survey: ISurvey) => survey.Id === surveyId),
+        isLoading,
+        isSuccess,
+        isError,
+        error,
+      }),
+    });
 
-  if (isError)
+  if (isLoading1 || isLoading2) return <CircularProgress />;
+
+  if (isError1 || isError2) {
+    const error = error1 && error1.toString() || error2 && error2.toString() || ""
     return (
-      <Error404Page customStatusText={(error && error.toString()) || ""} />
+      <Error404Page customStatusText={error} />
     );
+  }
 
-  if (isSuccess && typeof surveyInfo === "undefined")
+  if (isSuccess1 && isSuccess2 && typeof survey === "undefined")
     return <Error404Page customStatusText={surveyIsNotFound} />;
 
-  if (isSuccess && typeof surveyInfo !== "undefined")
-    return <SurveyCreator surveyId={surveyId} surveyJSON={surveyInfo.Json} />;
+  if (isSuccess1 && isSuccess2 && typeof survey !== "undefined") {
+    survey.Json = surveyInfo.Json;
+    return <SurveyCreator survey={survey} />;
+  }
 
   return <Error404Page />;
 }
