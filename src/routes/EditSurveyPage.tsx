@@ -4,21 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 import type { RootState } from "../state-container/store.ts";
 import {
-  surveyjsAccessKey,
   useGetActiveSurveysQuery,
+  useGetSurveyInfoQuery
 } from "../state-container/api-slices/surveyjsAPI.ts";
 import getTexts from "../localization/localization.ts";
 import SurveyCreator from "../components/surveyCreator/SurveysCreator.tsx";
 import Error404Page from "./Error404Page.tsx";
 import { ISurvey } from "../state-container/api-slices/surveyjsAPI.ts";
 import CircularProgress from "@mui/material/CircularProgress";
-
-interface ISurveyInfo {
-  Info: {
-    UpdatedOn: string;
-  };
-  Json: string;
-}
 
 export default function EditSurvey() {
   const params = useParams();
@@ -27,16 +20,8 @@ export default function EditSurvey() {
   const locale = useSelector((state: RootState) => state.settings.value.locale);
 
   const { surveyIsNotFound } = getTexts(locale).editSurveyPage;
-  const { survey, isLoading, isSuccess, isError, error } =
-    useGetActiveSurveysQuery(undefined, {
-      selectFromResult: ({ data, isLoading, isSuccess, isError, error }) => ({
-        survey: data?.find((survey: ISurvey) => survey.Id === surveyId),
-        isLoading,
-        isSuccess,
-        isError,
-        error,
-      }),
-    });
+  const { data: surveyInfo, isLoading, isSuccess, isError, error } =
+    useGetSurveyInfoQuery();
 
   if (isLoading) return <CircularProgress />;
 
@@ -45,11 +30,11 @@ export default function EditSurvey() {
       <Error404Page customStatusText={(error && error.toString()) || ""} />
     );
 
-  if (isSuccess && typeof survey === "undefined")
+  if (isSuccess && typeof surveyInfo === "undefined")
     return <Error404Page customStatusText={surveyIsNotFound} />;
 
-  if (isSuccess && typeof survey !== "undefined")
-    return <SurveyCreator survey={survey} />;
+  if (isSuccess && typeof surveyInfo !== "undefined")
+    return <SurveyCreator surveyId={surveyId} surveyJSON={surveyInfo.Json} />;
 
   return <Error404Page />;
 }

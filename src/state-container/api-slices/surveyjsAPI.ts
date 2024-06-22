@@ -11,6 +11,14 @@ export interface ISurvey {
   Json: string;
 }
 
+interface ISurveyInfo {
+  Info: {
+    UpdatedOn: string;
+  };
+  Json: string;
+}
+
+
 const baseUrl = "https://api.surveyjs.io/private/Surveys";
 const baseQuery = fetchBaseQuery({
   baseUrl,
@@ -27,11 +35,14 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     // The `getPosts` endpoint is a "query" operation that returns data
     getActiveSurveys: builder.query<ISurvey[], void>({
-      // The URL for the request is '/fakeApi/posts'
+      // The URL for the request
       query: () => `/getActive?accessKey=${surveyjsAccessKey}`,
+    }),
+    getSurveyInfo: builder.query<ISurveyInfo, void>({
+      query: surveyId => `/getSurveyInfo?accessKey=${surveyjsAccessKey}&surveyId=${surveyId}`,
     }),
   }),
 });
 
 // Export the auto-generated hook for the `getPosts` query endpoint
-export const { useGetActiveSurveysQuery } = apiSlice;
+export const { useGetActiveSurveysQuery, useGetSurveyInfoQuery } = apiSlice;
