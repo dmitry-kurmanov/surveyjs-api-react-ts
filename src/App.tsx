@@ -30,6 +30,7 @@ const router = createBrowserRouter([
   {
     path: "edit-survey/:surveyId",
     element: <EditSurveyPage />,
+    errorElement: <Error404Page />,
   },
 ]);
 

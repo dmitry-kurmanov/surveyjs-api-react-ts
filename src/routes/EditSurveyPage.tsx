@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import type { RootState } from "../state-container/store.ts";
 import {
@@ -11,7 +11,6 @@ import getTexts from "../localization/localization.ts";
 import SurveyCreator from "../components/surveyCreator/SurveysCreator.tsx";
 import Error404Page from "./Error404Page.tsx";
 import { ISurvey } from "../state-container/api-slices/surveyjsAPI.ts";
-import CircularProgress from "@mui/material/CircularProgress";
 
 export default function EditSurvey() {
   const params = useParams();
@@ -47,8 +46,7 @@ export default function EditSurvey() {
     return <Error404Page customStatusText={surveyIsNotFound} />;
 
   if (isSuccess1 && isSuccess2 && typeof survey !== "undefined") {
-    survey.Json = surveyInfo.Json;
-    return <SurveyCreator survey={survey} />;
+    return <SurveyCreator survey={{Id: surveyId, Json: surveyInfo.Json, Name: survey.Name}} />;
   }
 
   return <Error404Page />;
