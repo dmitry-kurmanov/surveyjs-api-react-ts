@@ -16,8 +16,21 @@ const creatorOptions = {
   showTranslationTab: true,
 };
 
+const creatorDarkThemeCssVariables = {
+  /* SurveyJS Creator V2 */
+  "--primary": "#1ab7fa",
+  "--primary-light": "rgba(26, 183, 250, 0.1)",
+  "--foreground": "#ededed",
+  "--primary-foreground": "#ffffff",
+  "--secondary": "#1ab7fa",
+  "--background": "#555555",
+  "--background-dim": "#4d4d4d",
+  "--background-dim-light": "#4d4d4d",
+} as React.CSSProperties;
+
 export default function SurveysCreator({ survey }: { survey: ISurvey }) {
   const locale = useSelector((state: RootState) => state.settings.value.locale);
+  const theme = useSelector((state: RootState) => state.settings.value.theme);
 
   //https://stackoverflow.com/a/7394787/6623551
   function decodeHtml(html: string) {
@@ -53,7 +66,10 @@ export default function SurveysCreator({ survey }: { survey: ISurvey }) {
   (window as any).creator = creator;
 
   return (
-    <section className="survey-creator-container">
+    <section
+      className="survey-creator-container"
+      style={theme === "dark" ? creatorDarkThemeCssVariables : {}}
+    >
       <div className="survey-creator-info">
         <h3 className="survey-list-name">{survey.Name}</h3>
       </div>
