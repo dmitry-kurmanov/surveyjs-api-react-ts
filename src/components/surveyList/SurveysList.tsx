@@ -8,10 +8,11 @@ import getTexts from "../../localization/localization.ts";
 import SurveyListItem from "../surveyListItem/SurveyListItem.tsx";
 import CircularProgress from "@mui/material/CircularProgress";
 import Error404Page from "../../routes/Error404Page.tsx";
+import CreateSurveyButton from "./CreateSurveyButton.tsx";
 
 export default function SurveysList() {
   const locale = useSelector((state: RootState) => state.settings.value.locale);
-  const { noSurveysText, title } = getTexts(locale).surveysList;
+  const { noSurveysText, title, createSurveyLabel } = getTexts(locale).surveysList;
 
   const {
     data: activeSurveys,
@@ -39,7 +40,10 @@ export default function SurveysList() {
     ));
     content = (
       <div className="survey-list-container">
-        <h1>{title}</h1>
+        <div className="survey-list-header">
+          <h1>{title}</h1>
+          <CreateSurveyButton label={createSurveyLabel} />
+        </div>
         <ul className="survey-list">{items}</ul>
       </div>
     );

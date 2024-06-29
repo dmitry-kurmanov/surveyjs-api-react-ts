@@ -11,6 +11,7 @@ const texts = {
   surveysList: {
     noSurveysText: "There is no any survey yet.",
     title: "My Surveys",
+    createSurveyLabel: "Create Survey"
   },
   surveyListItem: {
     editLinkText: "Edit",

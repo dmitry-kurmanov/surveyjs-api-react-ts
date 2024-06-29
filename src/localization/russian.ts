@@ -11,6 +11,7 @@ const texts = {
   surveysList: {
     noSurveysText: "Опросов пока ещё нет.",
     title: "Мои Опросы",
+    createSurveyLabel: "Создать опрос",
   },
   surveyListItem: {
     editLinkText: "Настроить",
