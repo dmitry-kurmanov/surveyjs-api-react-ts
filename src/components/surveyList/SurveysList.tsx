@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import type { RootState } from "../../state-container/store.ts";
 import { ISurvey } from "../../state-container/api-slices/surveyjsAPI.ts";
-import { useGetActiveSurveysQuery } from "../../state-container/api-slices/surveyjsAPI.ts";
+import { useGetActiveSurveysQuery, useAddNewPostMutation } from "../../state-container/api-slices/surveyjsAPI.ts";
 import "./SurveyList.scss";
 import getTexts from "../../localization/localization.ts";
 import SurveyListItem from "../surveyListItem/SurveyListItem.tsx";
@@ -22,9 +22,11 @@ export default function SurveysList() {
     error,
   } = useGetActiveSurveysQuery();
 
+  const [addNewPost, { isLoading: isAddingNewPost }] = useAddNewPostMutation();
+
   let content;
 
-  if (isLoading) {
+  if (isLoading || isAddingNewPost) {
     content = <CircularProgress />;
   } else if (isError) {
     content = <Error404Page customStatusText={error.toString()} />;
@@ -42,7 +44,7 @@ export default function SurveysList() {
       <div className="survey-list-container">
         <div className="survey-list-header">
           <h1>{title}</h1>
-          <CreateSurveyButton label={createSurveyLabel} />
+          <CreateSurveyButton label={createSurveyLabel} onClickHandler={addNewPost}/>
         </div>
         <ul className="survey-list">{items}</ul>
       </div>

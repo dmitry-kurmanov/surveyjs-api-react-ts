@@ -1,9 +1,9 @@
 import IconButton from "@mui/material/IconButton";
 import AddIcon from '@mui/icons-material/Add';
 
-export default function AddNewSurveyButton({label}: {label: string}) {
+export default function AddNewSurveyButton({label, onClickHandler}: {label: string, onClickHandler:Function}) {
     return <IconButton
-    href="/"
+    onClick={()=>{onClickHandler();}}
     className="add-new-survey-button"
     color="secondary"
     aria-label={label}
