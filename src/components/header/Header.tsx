@@ -1,5 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
-import { IconButton, useTheme } from "@mui/material";
+import {
+  FormControl,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+  useTheme,
+} from "@mui/material";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import HomeIcon from "@mui/icons-material/Home";
@@ -19,30 +26,37 @@ export default function Header() {
   );
   const dispatch = useDispatch();
   const theme = useTheme();
-  const { darkMode, lightMode } = getTexts(currentLocale).settings;
+  const { darkMode, lightMode, homeButton } = getTexts(currentLocale).settings;
 
   return (
     <header>
       <div className="logo">
-        <Link href="/">
+        <IconButton
+          href="/"
+          className="go-home-button"
+          color="primary"
+          aria-label={homeButton}
+        >
           <HomeIcon fontSize="large" />
-        </Link>
+        </IconButton>
       </div>
       <div className="settings-container">
-        <label>
-          <select
-            name="locale"
-            defaultValue={currentLocale}
+        <FormControl sx={{ m: 1, minWidth: 70 }} size="small">
+          <Select
+            labelId="select-locale-label"
+            id="demo-select-small"
+            value={currentLocale}
             onChange={(e) => {
               const newLocale = e.target.value;
               document.documentElement.lang = newLocale;
               dispatch(setLocale(newLocale));
             }}
           >
-            <option value="en">EN</option>
-            <option value="ru">RU</option>
-          </select>
-        </label>
+            <MenuItem value={"en"}>EN</MenuItem>
+            <MenuItem value={"ru"}>RU</MenuItem>
+          </Select>
+        </FormControl>
+
         <div className="theme-switcher">
           {theme.palette.mode === "dark" ? darkMode : lightMode}
           <IconButton

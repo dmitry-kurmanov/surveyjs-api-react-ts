@@ -6,6 +6,7 @@ const texts = {
   settings: {
     lightMode: "светлая тема",
     darkMode: "тёмная тема",
+    homeButton: "на главную"
   },
   surveysList: {
     noSurveysText: "Опросов пока ещё нет.",

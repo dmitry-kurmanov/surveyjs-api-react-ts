@@ -6,6 +6,7 @@ const texts = {
   settings: {
     lightMode: "light mode",
     darkMode: "dark mode",
+    homeButton: "go home"
   },
   surveysList: {
     noSurveysText: "There is no any survey yet.",

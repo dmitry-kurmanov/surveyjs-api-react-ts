@@ -4,11 +4,13 @@ import "survey-creator-core/survey-creator-core.min.css";
 import "survey-creator-core/survey-creator-core.i18n";
 import "survey-creator-core/i18n/russian";
 import { useSelector } from "react-redux";
+import EditIcon from '@mui/icons-material/Edit';
 
 import { ISurvey } from "../../state-container/api-slices/surveyjsAPI.ts";
 import { surveyjsAccessKey } from "../../state-container/api-slices/surveyjsAPI.ts";
 import { RootState } from "../../state-container/store.ts";
 import "./SurveysCreator.scss";
+import IconButton from "@mui/material/IconButton";
 
 const creatorOptions = {
   isAutoSave: true,
@@ -72,6 +74,9 @@ export default function SurveysCreator({ survey }: { survey: ISurvey }) {
     >
       <div className="survey-creator-info">
         <h3 className="survey-list-name">{survey.Name}</h3>
+        <IconButton color="secondary" aria-label="add an alarm">
+          <EditIcon fontSize="small" />
+        </IconButton>
       </div>
       <SurveyCreatorComponent creator={creator} />
     </section>

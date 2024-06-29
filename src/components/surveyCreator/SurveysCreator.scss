@@ -8,12 +8,14 @@
 }
 
 .survey-creator-info {
-  //display: flex;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .survey-list-name {
   margin: 0;
-  width: 50%;
+  max-width: 50%;
 }
 
 .svc-creator {
