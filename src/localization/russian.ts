@@ -31,6 +31,10 @@ const texts = {
     goBackLinkText: "Назад",
     surveyIsNotFound: "Опрос не найден...",
   },
+  footer: {
+    haveProblemsText: "Есть вопрсосы?",
+    createIssue: "создайте issue."
+  }
 };
 
 registerLocale(name, texts);

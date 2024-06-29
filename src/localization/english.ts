@@ -31,6 +31,10 @@ const texts = {
     goBackLinkText: "Go Back",
     surveyIsNotFound: "Can't find the survey...",
   },
+  footer: {
+    haveProblemsText: "Have a problems? Feel free to",
+    createIssue: "create an issue."
+  }
 };
 
 registerLocale(name, texts);
