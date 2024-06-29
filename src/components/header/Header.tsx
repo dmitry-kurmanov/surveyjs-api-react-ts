@@ -44,7 +44,7 @@ export default function Header() {
         <FormControl sx={{ m: 1, minWidth: 70 }} size="small">
           <Select
             labelId="select-locale-label"
-            id="demo-select-small"
+            id="select-locale"
             value={currentLocale}
             onChange={(e) => {
               const newLocale = e.target.value;
