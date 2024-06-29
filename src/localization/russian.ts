@@ -18,7 +18,7 @@ const texts = {
     runButtonText: "Запустить",
   },
   surveyCreator: {
-    surveyNameLabel: "Название опроса",
+    surveyNameLabel: "название опроса",
     editSurveyNameLabel: "Изменить название опроса",
     saveSurveyNameLabel: "Сохранить название опроса"
   },
