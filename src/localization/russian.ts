@@ -16,6 +16,11 @@ const texts = {
     editLinkText: "Настроить",
     runButtonText: "Запустить",
   },
+  surveyCreator: {
+    surveyNameLabel: "Название опроса",
+    editSurveyNameLabel: "Изменить название опроса",
+    saveSurveyNameLabel: "Сохранить название опроса"
+  },
   errorPage: {
     title: "Ой!",
     subTitle: "Извините, что-то пошло не так...",

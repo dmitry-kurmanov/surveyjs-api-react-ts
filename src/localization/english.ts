@@ -16,6 +16,11 @@ const texts = {
     editLinkText: "Edit",
     runButtonText: "Run",
   },
+  surveyCreator: {
+    surveyNameLabel: "Survey Name",
+    editSurveyNameLabel: "Edit Survey Name",
+    saveSurveyNameLabel: "Save Survey Name"
+  },
   errorPage: {
     title: "Oops!",
     subTitle: "Sorry, an unexpected error has occurred.",

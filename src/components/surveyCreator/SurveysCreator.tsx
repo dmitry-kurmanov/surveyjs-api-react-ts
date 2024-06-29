@@ -5,12 +5,15 @@ import "survey-creator-core/survey-creator-core.i18n";
 import "survey-creator-core/i18n/russian";
 import { useSelector } from "react-redux";
 import EditIcon from '@mui/icons-material/Edit';
+import IconButton from "@mui/material/IconButton";
+import { TextField } from "@mui/material";
 
 import { ISurvey } from "../../state-container/api-slices/surveyjsAPI.ts";
 import { surveyjsAccessKey } from "../../state-container/api-slices/surveyjsAPI.ts";
 import { RootState } from "../../state-container/store.ts";
 import "./SurveysCreator.scss";
-import IconButton from "@mui/material/IconButton";
+import getTexts from "../../localization/localization.ts";
+import { DoneOutline } from "@mui/icons-material";
 
 const creatorOptions = {
   isAutoSave: true,
@@ -33,6 +36,7 @@ const creatorDarkThemeCssVariables = {
 export default function SurveysCreator({ survey }: { survey: ISurvey }) {
   const locale = useSelector((state: RootState) => state.settings.value.locale);
   const theme = useSelector((state: RootState) => state.settings.value.theme);
+  const { surveyNameLabel, editSurveyNameLabel, saveSurveyNameLabel } = getTexts(locale).surveyCreator;
 
   //https://stackoverflow.com/a/7394787/6623551
   function decodeHtml(html: string) {
@@ -74,8 +78,18 @@ export default function SurveysCreator({ survey }: { survey: ISurvey }) {
     >
       <div className="survey-creator-info">
         <h3 className="survey-list-name">{survey.Name}</h3>
-        <IconButton color="secondary" aria-label="add an alarm">
+        <IconButton color="secondary" aria-label={editSurveyNameLabel}>
           <EditIcon fontSize="small" />
+        </IconButton>
+
+        <TextField
+          label={surveyNameLabel}
+          id="filled-size-small"
+          defaultValue="Small"
+          size="small"
+        />
+        <IconButton color="secondary" aria-label={saveSurveyNameLabel}>
+          <DoneOutline fontSize="small" />
         </IconButton>
       </div>
       <SurveyCreatorComponent creator={creator} />
