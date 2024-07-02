@@ -1,5 +1,3 @@
-import React, { useMemo } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./state-container/store.ts";
 
@@ -39,9 +37,10 @@ export default function App() {
     (state: RootState) => state.settings.value.theme,
   );
   const dispatch = useDispatch();
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   if (currentTheme === null) {
-    const userTheme = getUserPreferredTheme();
+    const userTheme = prefersDarkMode ? "dark" : "light";
     dispatch(setTheme(userTheme));
   }
 
@@ -60,9 +59,4 @@ export default function App() {
       <Footer />
     </ThemeProvider>
   );
-}
-
-function getUserPreferredTheme() {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  return prefersDarkMode ? "dark" : "light";
 }

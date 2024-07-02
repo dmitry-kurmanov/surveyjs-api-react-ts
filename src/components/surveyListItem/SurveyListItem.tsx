@@ -15,7 +15,7 @@ export default function SurveyListItem({ name, id }: ISurveyListItem) {
   const locale = useSelector((state: RootState) => state.settings.value.locale);
   const { editLinkText, runButtonText } = getTexts(locale).surveyListItem;
 
-  async function runSurvey(event: React.MouseEvent<HTMLButtonElement>) {
+  async function runSurvey() {
     window.open(`https://surveyjs.io/published?id=${id}`, "_blank");
   }
 

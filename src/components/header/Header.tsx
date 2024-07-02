@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   FormControl,
   IconButton,
-  InputLabel,
   MenuItem,
   Select,
   useTheme,
@@ -10,7 +9,6 @@ import {
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import HomeIcon from "@mui/icons-material/Home";
-import Link from "@mui/material/Link";
 
 import { RootState } from "../../state-container/store.ts";
 import { setLocale, setTheme } from "../../state-container/slices/settings.ts";
