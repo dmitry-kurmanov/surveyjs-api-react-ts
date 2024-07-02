@@ -34,6 +34,9 @@ export default function SurveysList() {
     content = (
       <div className="survey-list-no-surveys-container">
         <h2>{noSurveysText}</h2>
+        <div>
+          <CreateSurveyButton label={createSurveyLabel} onClickHandler={addNewPost}/>
+        </div>
       </div>
     );
   } else if (isSuccess && activeSurveys.length > 0) {
@@ -53,5 +56,5 @@ export default function SurveysList() {
     content = <Error404Page />;
   }
 
-  return <section>{content}</section>;
+  return <>{content}</>;
 }

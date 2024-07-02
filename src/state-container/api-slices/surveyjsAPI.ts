@@ -1,9 +1,8 @@
 // Import the RTK Query methods from the React-specific entry point
 import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
 
-// just test key
-// need encryption for the real one
-export const surveyjsAccessKey = "f60db1fb75f440eaaddc46bfca1a8c03";
+// just test key ASD-test-123@ASD-test-123.com
+export const surveyjsAccessKey = "18c33d8395564eb290b14458f5601c47";
 
 export interface ISurvey {
   Id: string;
@@ -45,7 +44,7 @@ export const apiSlice = createApi({
     }),
     addNewPost: builder.mutation<ISurvey, void>({
       query: () => ({
-        url: `/create?name=${"New Survey"}&accessKey=f60db1fb75f440eaaddc46bfca1a8c03`,
+        url: `/create?name=${"New Survey"}&accessKey=${surveyjsAccessKey}`,
         method: "POST",
       }),
       invalidatesTags: ['Survey']
