@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./state-container/store.ts";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 
 import Header from "./components/header/Header.tsx";
 import RootPage from "./routes/RootPage.tsx";
@@ -19,7 +19,7 @@ import "./App.scss";
 import { useMediaQuery } from "@mui/material";
 import { setTheme } from "./state-container/slices/settings.ts";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <RootPage />,

@@ -17,6 +17,7 @@ function createWindow() {
   });
 
   win.loadFile("dist/index.html");
+  win.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {

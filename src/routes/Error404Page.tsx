@@ -20,6 +20,8 @@ export default function ErrorPage404({
 
   const error: IRouteError = useRouteError() as IRouteError;
 
+  console.error(error);
+
   return (
     <section id="error-page">
       <h1>{title}</h1>
