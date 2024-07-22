@@ -11,6 +11,7 @@ import getTexts from "../localization/localization.ts";
 import SurveyCreator from "../components/surveyCreator/SurveysCreator.tsx";
 import Error404Page from "./Error404Page.tsx";
 import { ISurvey } from "../state-container/api-slices/surveyjsAPI.ts";
+import Layout from "../components/layout/Layout.tsx";
 
 export default function EditSurvey() {
   const params = useParams();
@@ -33,7 +34,7 @@ export default function EditSurvey() {
       }),
     });
 
-  if (isLoading1 || isLoading2) return <CircularProgress />;
+  if (isLoading1 || isLoading2) return <Layout><CircularProgress /></Layout>;
 
   if (isError1 || isError2) {
     const error = error1 && error1.toString() || error2 && error2.toString() || ""
@@ -46,7 +47,9 @@ export default function EditSurvey() {
     return <Error404Page customStatusText={surveyIsNotFound} />;
 
   if (isSuccess1 && isSuccess2 && typeof survey !== "undefined") {
-    return <SurveyCreator survey={{Id: surveyId, Json: surveyInfo.Json, Name: survey.Name}} />;
+    return <Layout>
+      <SurveyCreator survey={{Id: surveyId, Json: surveyInfo.Json, Name: survey.Name}} />
+    </Layout>;
   }
 
   return <Error404Page />;

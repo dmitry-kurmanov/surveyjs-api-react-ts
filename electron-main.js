@@ -11,13 +11,13 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
-    },
+    // webPreferences: {
+    //   preload: path.join(__dirname, "preload.js"),
+    // },
   });
 
   win.loadFile("dist/index.html");
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {

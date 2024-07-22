@@ -1,22 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./state-container/store.ts";
-
 import { createHashRouter, RouterProvider } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { useMediaQuery } from "@mui/material";
 
-import Header from "./components/header/Header.tsx";
+import { RootState } from "./state-container/store.ts";
 import RootPage from "./routes/RootPage.tsx";
 import Error404Page from "./routes/Error404Page.tsx";
 import EditSurveyPage from "./routes/EditSurveyPage.tsx";
-import Footer from "./components/footer/Footer.tsx";
-
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-
 import "./localization/english.ts";
 import "./localization/russian.ts";
-
 import "./App.scss";
-import { useMediaQuery } from "@mui/material";
 import { setTheme } from "./state-container/slices/settings.ts";
 
 const router = createHashRouter([
@@ -52,11 +46,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header />
-      <main>
-        <RouterProvider router={router} />
-      </main>
-      <Footer />
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 }

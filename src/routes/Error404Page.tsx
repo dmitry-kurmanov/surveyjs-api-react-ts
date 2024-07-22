@@ -4,6 +4,7 @@ import Link from "@mui/material/Link";
 import getTexts from "../localization/localization.ts";
 import { RootState } from "../state-container/store.ts";
 import { useSelector } from "react-redux";
+import Layout from "../components/layout/Layout.tsx";
 
 interface IRouteError {
   statusText: string;
@@ -22,7 +23,7 @@ export default function ErrorPage404({
 
   console.error(error);
 
-  return (
+  return <Layout>
     <section id="error-page">
       <h1>{title}</h1>
       <h2>{subTitle}</h2>
@@ -37,5 +38,5 @@ export default function ErrorPage404({
         {goToHome}
       </Link>
     </section>
-  );
+  </Layout>;
 }
