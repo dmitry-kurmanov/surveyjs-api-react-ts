@@ -42,7 +42,7 @@ export const apiSlice = createApi({
       query: (surveyId) =>
         `/getSurveyInfo?accessKey=${surveyjsAccessKey}&surveyId=${surveyId}`,
     }),
-    addNewPost: builder.mutation<ISurvey, void>({
+    addNewSurvey: builder.mutation<ISurvey, void>({
       query: () => ({
         url: `/create?name=${"New Survey"}&accessKey=${surveyjsAccessKey}`,
         method: "POST",
@@ -56,5 +56,5 @@ export const apiSlice = createApi({
 export const {
   useGetActiveSurveysQuery,
   useGetSurveyInfoQuery,
-  useAddNewPostMutation,
+  useAddNewSurveyMutation,
 } = apiSlice;

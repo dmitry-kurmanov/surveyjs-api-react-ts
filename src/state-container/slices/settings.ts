@@ -22,7 +22,7 @@ export function setLocaleReducer(
   // doesn't actually mutate the state because it uses the Immer library,
   // which detects changes to a "draft state" and produces a brand new
   // immutable state based off those changes
-  let newLocale = action.payload as string;
+  const newLocale = action.payload as string;
   state.value.locale = newLocale;
 }
 
@@ -30,7 +30,7 @@ export function setThemeReducer(
   state: ISettingsState,
   action: PayloadAction<string>,
 ) {
-  let newTheme = action.payload as string;
+  const newTheme = action.payload as string;
   state.value.theme = newTheme;
 }
 

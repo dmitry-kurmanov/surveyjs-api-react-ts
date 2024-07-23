@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import type { RootState } from "../../state-container/store.ts";
 import { ISurvey } from "../../state-container/api-slices/surveyjsAPI.ts";
-import { useGetActiveSurveysQuery, useAddNewPostMutation } from "../../state-container/api-slices/surveyjsAPI.ts";
+import { useGetActiveSurveysQuery, useAddNewSurveyMutation } from "../../state-container/api-slices/surveyjsAPI.ts";
 import "./SurveyList.scss";
 import getTexts from "../../localization/localization.ts";
 import SurveyListItem from "../surveyListItem/SurveyListItem.tsx";
@@ -22,7 +22,7 @@ export default function SurveysList() {
     error,
   } = useGetActiveSurveysQuery();
 
-  const [addNewPost, { isLoading: isAddingNewPost }] = useAddNewPostMutation();
+  const [addNewSurvey, { isLoading: isAddingNewPost }] = useAddNewSurveyMutation();
 
   let content;
 
@@ -35,7 +35,7 @@ export default function SurveysList() {
       <div className="survey-list-no-surveys-container">
         <h2>{noSurveysText}</h2>
         <div>
-          <CreateSurveyButton label={createSurveyLabel} onClickHandler={addNewPost}/>
+          <CreateSurveyButton label={createSurveyLabel} onClickHandler={addNewSurvey}/>
         </div>
       </div>
     );
@@ -47,7 +47,7 @@ export default function SurveysList() {
       <div className="survey-list-container">
         <div className="survey-list-header">
           <h1>{title}</h1>
-          <CreateSurveyButton label={createSurveyLabel} onClickHandler={addNewPost}/>
+          <CreateSurveyButton label={createSurveyLabel} onClickHandler={addNewSurvey}/>
         </div>
         <ul className="survey-list">{items}</ul>
       </div>

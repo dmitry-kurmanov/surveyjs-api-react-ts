@@ -15,6 +15,11 @@ import { RootState } from "../../state-container/store.ts";
 import "./SurveysCreator.scss";
 import getTexts from "../../localization/localization.ts";
 import { useState } from "react";
+import { useGetActiveSurveysQuery } from "../../state-container/api-slices/surveyjsAPI.ts";
+
+declare global {
+  interface Window { creator: SurveyCreator; }
+}
 
 const creatorOptions = {
   isAutoSave: true,
@@ -41,9 +46,11 @@ export default function SurveysCreator({ survey }: { survey: ISurvey }) {
   const [isNameEditing, setIsNameEditing] = useState(false);
   const [surveyName, setSurveyName] = useState(survey.Name);
 
+  const { refetch: activeSurveysRefetch,  } = useGetActiveSurveysQuery();
+
   //https://stackoverflow.com/a/7394787/6623551
   function decodeHtml(html: string) {
-    var txt = document.createElement("textarea");
+    const txt = document.createElement("textarea");
     txt.innerHTML = html;
     return txt.value;
   }
@@ -72,7 +79,7 @@ export default function SurveysCreator({ survey }: { survey: ISurvey }) {
       callback(saveNo, true);
     });
   };
-  (window as any).creator = creator;
+  window.creator = creator;
 
   const startSurveyNameEditing = ()=> {
     setIsNameEditing(true);
@@ -94,6 +101,7 @@ export default function SurveysCreator({ survey }: { survey: ISurvey }) {
     ).then((/*data*/) => {
       setSurveyName(input.value);
       setIsNameEditing(false);
+      activeSurveysRefetch();
     });
   };
 
