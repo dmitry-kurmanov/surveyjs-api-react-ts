@@ -15,7 +15,8 @@ import { RootState } from "../../state-container/store.ts";
 import "./SurveysCreator.scss";
 import getTexts from "../../localization/localization.ts";
 import { useState } from "react";
-import { useGetActiveSurveysQuery } from "../../state-container/api-slices/surveyjsAPI.ts";
+import { apiSlice } from "../../state-container/api-slices/surveyjsAPI.ts";
+import store from "../../state-container/store.ts"
 
 declare global {
   interface Window { creator: SurveyCreator; }
@@ -45,8 +46,6 @@ export default function SurveysCreator({ survey }: { survey: ISurvey }) {
   const { surveyNameLabel, editSurveyNameLabel, saveSurveyNameLabel } = getTexts(locale).surveyCreator;
   const [isNameEditing, setIsNameEditing] = useState(false);
   const [surveyName, setSurveyName] = useState(survey.Name);
-
-  const { refetch: activeSurveysRefetch,  } = useGetActiveSurveysQuery();
 
   //https://stackoverflow.com/a/7394787/6623551
   function decodeHtml(html: string) {
@@ -99,9 +98,16 @@ export default function SurveysCreator({ survey }: { survey: ISurvey }) {
         }
       },
     ).then((/*data*/) => {
+      /*const patchCollection = */store.dispatch(
+        apiSlice.util.updateQueryData("getActiveSurveys", undefined, (draftSurveys) => {
+          const survey = draftSurveys.find(survey=>survey.Name === surveyName);
+          if (survey) {
+            survey.Name = input.value;
+          }
+        }),
+      )
       setSurveyName(input.value);
       setIsNameEditing(false);
-      activeSurveysRefetch();
     });
   };
 
