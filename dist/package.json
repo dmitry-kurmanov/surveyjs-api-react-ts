@@ -1,0 +1,24 @@
+{
+    "name": "my-surveys",
+    "version": "0.0.1",
+    "description": "SurveyJS Electron Integration",
+    "main": "./electron-main.js",
+    "scripts": {
+      "start": "electron ."
+    },
+    "repository": "https://github.com/dmitry-kurmanov/surveyjs-api-react-ts",
+    "keywords": [
+      "Electron",
+      "SurveyJS",
+      "React",
+      "Vite",
+      "RTK",
+      "RTK-Query",
+      "React-Router",
+      "MUI"
+    ],
+    "author": "dmitry-kurmanov",
+    "devDependencies": {
+      "electron": "^31.2.1"
+    }
+  }
