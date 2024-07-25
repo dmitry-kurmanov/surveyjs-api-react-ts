@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "electron": "electron .",
-    "electron-pack": "electron-packager ./dist MySurveys --platform=win32 --arch=x64"
+    "electron-pack": "electron-packager ./dist MySurveys --platform=win32 --arch=x64 --overwrite"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",

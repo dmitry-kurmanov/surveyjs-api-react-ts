@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "description": "SurveyJS Electron Integration",
     "main": "./electron-main.js",
+    "type": "module",
     "scripts": {
       "start": "electron ."
     },
